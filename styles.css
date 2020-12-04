@@ -1,0 +1,37 @@
+/* * {
+  margin: 0;
+  padding: 0;
+} */
+
+td {
+  border: solid 1px black;
+  font-weight: 100;
+}
+
+table {
+  border-collapse: collapse;
+  border: 3px solid black;
+}
+
+.boldBorder {
+  border: 2px solid black;
+}
+
+td:nth-child(even) {
+  background: #ccc;
+}
+td:nth-child(odd) {
+  background: #fff;
+}
+
+.darkGray {
+  background-color: darkgray;
+}
+/* 
+.lightGray {
+  background-color: lightgray !important;
+} */
+
+.lightGray {
+  background-color: yellow !important;
+}
