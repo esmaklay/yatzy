@@ -1,49 +1,52 @@
 document.addEventListener("DOMContentLoaded", function (e) {
-    let button = document.getElementById("button");
-    let sumpl11 = [];
+    let sumButton = document.getElementById("sumButton");
 
-    /* button.addEventListener("click", function (e) {
-
-        sumpl11.push(player1_ones.valueAsNumber, player1_twos.valueAsNumber, player1_threes.valueAsNumber, player1_fours.valueAsNumber, player1_fives.valueAsNumber, player1_sixes.valueAsNumber);
-        let sumpl1 = sumpl11.reduce(((accumulated, value) => accumulated + value), 0);
-
-        console.log(sumpl1);
-
-    })
- */
+    let tempArray1 = Array.from(document.getElementsByClassName("player1"));
+    let tempArray2 = Array.from(document.getElementsByClassName("player2"));
+    let tempArray3 = Array.from(document.getElementsByClassName("player3"));
+    let tempArray4 = Array.from(document.getElementsByClassName("player4"));
+  
     
-    let htmlcollection1 = document.getElementsByClassName("player1");
-    let tempArray1 = Array.from(htmlcollection1);
+    sumButton.addEventListener("click", function(e) {
+        let p1sum = document.getElementById("p1sum");
+        let player1_singulars = tempArray1.map(element => Number(element.value));
+        p1summedsingulars = player1_singulars.reduce(((acc, value) => acc + value), 0)
+        p1sum.innerHTML = p1summedsingulars
+        if (p1summedsingulars >=63) {
+            document.getElementById("bonus1").innerHTML = "50";
+        };
+        
+        let p2sum = document.getElementById("p2sum");
+        let player2_singulars = tempArray2.map(element => Number(element.value));
+        p2summedsingulars = player2_singulars.reduce(((acc, value) => acc + value), 0)
+        p2sum.innerHTML = p2summedsingulars
+        if (p2summedsingulars >=63) {
+            document.getElementById("bonus2").innerHTML = "50";
+        };
 
-    let htmlcollection2 = document.getElementsByClassName("player2");
-    let tempArray2 = Array.from(htmlcollection2);
+        let p3sum = document.getElementById("p3sum");
+        let player3_singulars = tempArray3.map(element => Number(element.value));
+        p3summedsingulars = player3_singulars.reduce(((acc, value) => acc + value), 0);
+        p3sum.innerHTML = p3summedsingulars
+        if (p3summedsingulars >=63) {
+            document.getElementById("bonus3").innerHTML = "50";
+        };
 
-    let htmlcollection3 = document.getElementsByClassName("player3");
-    let tempArray3 = Array.from(htmlcollection3);
+        let p4sum = document.getElementById("p4sum");
+        let player4_singulars = tempArray4.map(element => Number(element.value));
+        p4summedsingulars = player4_singulars.reduce(((acc, value) => acc + value), 0);
+        p4sum.innerHTML = p4summedsingulars
+        if (p4summedsingulars >=63) {
+            document.getElementById("bonus4").innerHTML = "50";
+        };
 
-    let htmlcollection4 = document.getElementsByClassName("player4");
-    let tempArray4 = Array.from(htmlcollection4);
-    
-    
-    button.addEventListener("click", function(e) {
-        let player1_singulars = tempArray1.map(element => parseInt(element.value));
-        console.log(player1_singulars);
-
-        let player2_singulars = tempArray2.map(element => parseInt(element.value));
-        console.log(player2_singulars);
-
-        let player3_singulars = tempArray3.map(element => parseInt(element.value));
-        console.log(player3_singulars);
-
-        let player4_singulars = tempArray4.map(element => parseInt(element.value));
-        console.log(player4_singulars);
     });
 
 
-    //let dicecollection = document.getElementsByClassName("dice");
-    let diceArray = Array.from(document.getElementsByClassName("dice"));
-    //let filteredArray = [];
 
+
+    let diceArray = Array.from(document.getElementsByClassName("dice"));
+    
     diceButton.addEventListener("click", function(event) {
         filteredArray = diceArray.filter(element => {
             return element.checked;
