@@ -40,20 +40,18 @@ document.addEventListener("DOMContentLoaded", function (e) {
     });
 
 
-    let dicecollection = document.getElementsByClassName("dice");
-    let diceArray = Array.from(dicecollection);
-    let filteredArray = [];
+    //let dicecollection = document.getElementsByClassName("dice");
+    let diceArray = Array.from(document.getElementsByClassName("dice"));
+    //let filteredArray = [];
 
-    document.addEventListener("input", function(event) {
+    diceButton.addEventListener("click", function(event) {
         filteredArray = diceArray.filter(element => {
-            return element.target.checked === true; 
+            return element.checked;
         });
-
         
-    })
-
-    console.log(filteredArray);
-
+        console.log(filteredArray);
+        
+   })
 
 
 
