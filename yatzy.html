@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
-    <title>Document</title>
+    <title>Yatzy</title>
   </head>
   <body>
     
@@ -20,55 +20,55 @@
           <th><input class="lightGray" type="TEXT" name="name" /></th>
         </tr>
       </thead>
-      <tbody>
+      <tbody class="singulars">
         <tr>
           <td>Ettor/Ones</td>
-          <td><input type="number" id="player1_ones" min="0" max="5"></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td><input type="number" class="player1" value="0" min="0" max="5" step="1"></td>
+          <td><input type="number" class="player2" value="0" min="0" max="5" step="1"></td>
+          <td><input type="number" class="player3" value="0" min="0" max="5" step="1"></td>
+          <td><input type="number" class="player4" value="0" min="0" max="5" step="1"></td>
         </tr>
 
         <tr>
           <td>Tvåor/Twos</td>
-          <td><input type="number" id="player1_twos" min="0" max="10"></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td><input type="number" class="player1" value="0" min="0" max="10" step="2"></td>
+          <td><input type="number" class="player2" value="0" min="0" max="10" step="2"></td>
+          <td><input type="number" class="player3" value="0" min="0" max="10" step="2"></td>
+          <td><input type="number" class="player4" value="0" min="0" max="10" step="2"></td>
         </tr>
 
         <tr>
           <td>Treor/Threes</td>
-          <td><input type="number" id="player1_threes" min="0" max="15"></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td><input type="number" class="player1" value="0" min="0" max="15" step="3"></td>
+          <td><input type="number" class="player2" value="0" min="0" max="15" step="3"></td>
+          <td><input type="number" class="player3" value="0" min="0" max="15" step="3"></td>
+          <td><input type="number" class="player4" value="0" min="0" max="15" step="3"></td>
         </tr>
 
         <tr>
           <td>Fyror/Fours</td>
-          <td><input type="number" id="player1_fours" min="0" max="20"></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td><input type="number" class="player1" value="0" min="0" max="20" step="4"></td>
+          <td><input type="number" class="player2" value="0" min="0" max="20" step="4"></td>
+          <td><input type="number" class="player3" value="0" min="0" max="20" step="4"></td>
+          <td><input type="number" class="player4" value="0" min="0" max="20" step="4"></td>
         </tr>
 
         <tr>
           <td>Femmor/Fives</td>
-          <td><input type="number" id="player1_fives" min="0" max="25"></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td><input type="number" class="player1" value="0" min="0" max="25" step="5"></td>
+          <td><input type="number" class="player2" value="0" min="0" max="25" step="5"></td>
+          <td><input type="number" class="player3" value="0" min="0" max="25" step="5"></td>
+          <td><input type="number" class="player4" value="0" min="0" max="25" step="5"></td>
         </tr>
 
         <tr>
           <td>Sexor/Sixes</td>
-          <td><input type="number" id="player1_sixes" min="0" max="30"></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td><input type="number" class="player1" value="0" min="0" max="30" step="6"></td>
+          <td><input type="number" class="player2" value="0" min="0" max="30" step="6"></td>
+          <td><input type="number" class="player3" value="0" min="0" max="30" step="6"></td>
+          <td><input type="number" class="player4" value="0" min="0" max="30" step="6"></td>
         </tr>
-
+      </tbody>
         <tr class="boldBorder lightGray">
           <td class="darkGray">Summa/Sum</td>
           <td></td>
@@ -84,7 +84,8 @@
           <td></td>
           <td></td>
         </tr>
-
+      
+      <tbody class="combinations">
         <tr>
           <td>Par/Pair</td>
           <td></td>
@@ -169,6 +170,38 @@
       </tfoot>
     </table>
     <button type="button" id="button">Beräkna!</button>
+
+    <div>
+      <p>
+        Dice1:
+        <input type="checkbox" class="dice">
+      </p>
+      
+      <p>
+        Dice2:
+        <input type="checkbox" class="dice" checked>
+      </p>
+
+      <p>
+        Dice3:
+        <input type="checkbox" class="dice">
+      </p>
+
+      <p>
+        Dice4:
+        <input type="checkbox" class="dice" checked>
+      </p>
+
+      <p>
+        Dice5:
+        <input type="checkbox" class="dice">
+      </p>
+      
+    </div>
+
+
+
+
     <script src="script.js"></script>
   </body>
 </html>
