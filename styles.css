@@ -51,6 +51,15 @@ input {
 } */
 
 input {
-  width: 100px;
+  width: 100%;
   border: none;
+  
+}
+
+col {
+  width: 100px;
+}
+
+.disable {
+  background-color: red;
 }
