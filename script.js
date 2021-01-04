@@ -1,5 +1,11 @@
 document.addEventListener("DOMContentLoaded", function (e) {
     let sumButton = document.getElementById("sumButton");
+    let totalButton = document.getElementById("totalButton");
+
+    let player1 = document.getElementById("player1").value;
+    let player2 = document.getElementById("player2").value; 
+    let player3 = document.getElementById("player3").value;
+    let player4 = document.getElementById("player4").value;
 
     let tempArray1 = Array.from(document.getElementsByClassName("player1"));
     let tempArray2 = Array.from(document.getElementsByClassName("player2"));
@@ -9,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     
     sumButton.addEventListener("click", function(e) {
         let p1sum = document.getElementById("p1sum");
+        tempArray1 = tempArray1.slice(0, 6);
         let player1_singulars = tempArray1.map(element => Number(element.value));
         p1summedsingulars = player1_singulars.reduce(((acc, value) => acc + value), 0)
         p1sum.innerHTML = p1summedsingulars
@@ -17,6 +24,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         };
         
         let p2sum = document.getElementById("p2sum");
+        tempArray2 = tempArray2.slice(0, 6);
         let player2_singulars = tempArray2.map(element => Number(element.value));
         p2summedsingulars = player2_singulars.reduce(((acc, value) => acc + value), 0)
         p2sum.innerHTML = p2summedsingulars
@@ -25,6 +33,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         };
 
         let p3sum = document.getElementById("p3sum");
+        tempArray3 = tempArray3.slice(0, 6);
         let player3_singulars = tempArray3.map(element => Number(element.value));
         p3summedsingulars = player3_singulars.reduce(((acc, value) => acc + value), 0);
         p3sum.innerHTML = p3summedsingulars
@@ -33,6 +42,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         };
 
         let p4sum = document.getElementById("p4sum");
+        tempArray4 = tempArray4.slice(0, 6);
         let player4_singulars = tempArray4.map(element => Number(element.value));
         p4summedsingulars = player4_singulars.reduce(((acc, value) => acc + value), 0);
         p4sum.innerHTML = p4summedsingulars
@@ -43,7 +53,11 @@ document.addEventListener("DOMContentLoaded", function (e) {
     });
 
 
+    function sumTotal() {
+        //for (let i=1; i < .length; i++) {
 
+        //}
+    }
 
     let diceArray = Array.from(document.getElementsByClassName("dice"));
     
