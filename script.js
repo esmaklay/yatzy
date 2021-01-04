@@ -1,6 +1,76 @@
+class Game {
+    constructor() {
+        this.playersArray = [];
+    }
+
+    newGame() {
+        let noOfPlayers = prompt("How many players are you? Choose between 1-4.");
+        noOfPlayers = Number(noOfPlayers);
+
+        for (let i = 0; i < noOfPlayers; i++) {
+            let player = new Player(`player${i+1}`);
+            this.playersArray.push(player);
+        };
+
+        this.playersArray[0].turn = true;
+
+        let playerfields = document.querySelectorAll('.player1');
+        for (let i = 0; i < playerfields.length; i++) {
+            playerfields[i].classList.add('active');
+        }
+        
+    };
+
+    togglePlayers() {
+        for (let i=0; i < this.playersArray.length; i++) {
+            if(this.playersArray[i].turn === true) {
+                let playerfields = document.querySelectorAll(`.player${[i+1]}`);
+
+                for (let i = 0; i < playerfields.length; i++) {
+                    playerfields[i].classList.remove('active');
+                }
+
+                this.playersArray[i].turn = false;
+                
+                if ((i+1) === this.playersArray.length) {
+                    this.playersArray[0].turn = true;
+                    playerfields = document.querySelectorAll('.player1')
+                    for (let i = 0; i < playerfields.length; i++) {
+                        playerfields[i].classList.add('active');
+                    }
+                } else {
+                    this.playersArray[i+1].turn = true;
+                    playerfields = document.querySelectorAll(`.player${[i+2]}`)
+                    for (let i = 0; i < playerfields.length; i++) {
+                        playerfields[i].classList.add('active');
+                    }
+                };
+                break;
+            };
+        };  
+    };
+};
+
+class Player {
+    constructor(name) {
+        this.name = name;
+        this.turn = false;
+    }
+
+}
+
+
+
+
+
 document.addEventListener("DOMContentLoaded", function (e) {
+    let game1 = new Game;
+    game1.newGame();
+    console.log(game1.playersArray);
+
     let sumButton = document.getElementById("sumButton");
     let totalButton = document.getElementById("totalButton");
+    let btnDone = document.getElementById("btnDone");
 
     let player1 = document.getElementById("player1").value;
     let player2 = document.getElementById("player2").value; 
@@ -68,7 +138,14 @@ document.addEventListener("DOMContentLoaded", function (e) {
         
         console.log(filteredArray);
         
-   })
+   });
+
+   btnDone.addEventListener("click", function(event) {
+        game1.togglePlayers();
+        console.log(game1.playersArray);
+   });
+
+  
 
 
 
