@@ -140,6 +140,10 @@ class Die {
 
     throw() {
         this.value = Math.floor(Math.random() *6 + 1);
+
+              
+               
+    
     }
 }
 
@@ -238,16 +242,38 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
   let diceArray = Array.from(document.getElementsByClassName("dice"));
 
-  diceButton.addEventListener("click", function (event) {
+  /*diceButton.addEventListener("click", function (event) {
     filteredArray = diceArray.filter((element) => {
       return element.checked;
     });
 
     console.log(filteredArray);
   });
-
+*/
   btnDone.addEventListener("click", function (event) {
     game1.togglePlayers();
     console.log(game1.playersArray);
   });
+  buttonThrow.addEventListener("click",function(event){
+  var randomNumber1 = Math.floor(Math.random() * 6) + 1; 
+  var randomNumber2 = Math.floor(Math.random() * 6) + 1; 
+  var randomNumber3 = Math.floor(Math.random() * 6) + 1; 
+  var randomNumber4 = Math.floor(Math.random() * 6) + 1; 
+  var randomNumber5 = Math.floor(Math.random() * 6) + 1; 
+  document.querySelector(".img1").setAttribute("src", 
+      "dice" + randomNumber1 + ".png"); 
+
+  document.querySelector(".img2").setAttribute("src", 
+      "dice" + randomNumber2 + ".png"); 
+  
+  document.querySelector(".img3").setAttribute("src", 
+      "dice" + randomNumber3 + ".png"); 
+  
+  document.querySelector(".img4").setAttribute("src", 
+      "dice" + randomNumber4 + ".png"); 
+  
+  document.querySelector(".img5").setAttribute("src", 
+      "dice" + randomNumber5 + ".png"); 
+});
+  
 });
