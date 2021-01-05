@@ -1,18 +1,19 @@
 class Game {
   constructor() {
     this.playersArray = [];
+    this.noOfPlayers = 0;
   }
 
     newGame() {
-        let noOfPlayers = prompt("How many players are you? Choose between 2-4.");
-        noOfPlayers = Number(noOfPlayers);
+        this.noOfPlayers = prompt("How many players are you? Choose between 2-4.");
+        this.noOfPlayers = Number(this.noOfPlayers);
 
-        while (noOfPlayers < 2 || noOfPlayers > 4) {
-            noOfPlayers = prompt("Choose between 2-4 players. How many players are you?");
-            noOfPlayers = Number(noOfPlayers);
+        while (this.noOfPlayers < 2 || this.noOfPlayers > 4) {
+            this.noOfPlayers = prompt("Choose between 2-4 players. How many players are you?");
+            this.noOfPlayers = Number(noOfPlayers);
         };
 
-        for (let i = 0; i < noOfPlayers; i++) {
+        for (let i = 0; i < this.noOfPlayers; i++) {
             let player = new Player(`player${i+1}`);
             this.playersArray.push(player);
         };
@@ -43,7 +44,7 @@ class Game {
 
         for (let i = 0; i < playerfields.length; i++) {
           playerfields[i].classList.remove("active");
-        }
+        };
 
         this.playersArray[i].turn = false;
 
@@ -52,7 +53,7 @@ class Game {
           playerfields = document.querySelectorAll(".player1");
           for (let i = 0; i < playerfields.length; i++) {
             playerfields[i].classList.add("active");
-          }
+          };
         } else {
           this.playersArray[i + 1].turn = true;
           playerfields = document.querySelectorAll(`.player${[i + 2]}`);
@@ -66,107 +67,39 @@ class Game {
   }
 
   sumSingulars() {
-    let tempArray1 = Array.from(document.getElementsByClassName("player1"));
-    let tempArray2 = Array.from(document.getElementsByClassName("player2"));
-    let tempArray3 = Array.from(document.getElementsByClassName("player3"));
-    let tempArray4 = Array.from(document.getElementsByClassName("player4"));
+    for (let i = 1; i < (this.noOfPlayers +1); i++) {
+        let tempArray = Array.from(document.querySelectorAll(`.player${i}`));
+        let psum = document.getElementById(`p${i}sum`);
+        
+        tempArray = tempArray
+        .slice(0, 6)
+        .map((element) => Number(element.value))
+        .reduce((acc, value) => acc + value, 0);
+        psum.innerHTML = tempArray;
 
-    let p1sum = document.getElementById("p1sum");
-    tempArray1 = tempArray1.slice(0, 6);
-    let player1_singulars = tempArray1.map((element) => Number(element.value));
-    let p1summedsingulars = player1_singulars.reduce(
-      (acc, value) => acc + value,
-      0
-    );
-    p1sum.innerHTML = p1summedsingulars;
-    if (p1summedsingulars >= 63) {
-      document.getElementById("bonus1").innerHTML = "50";
-    }
+        if (tempArray >= 63) {
+            document.getElementById(`bonus${i}`).innerHTML = "50";
+        };
+    };
+  };
 
-    let p2sum = document.getElementById("p2sum");
-    tempArray2 = tempArray2.slice(0, 6);
-    let player2_singulars = tempArray2.map((element) => Number(element.value));
-    let p2summedsingulars = player2_singulars.reduce(
-      (acc, value) => acc + value,
-      0
-    );
-    p2sum.innerHTML = p2summedsingulars;
-    if (p2summedsingulars >= 63) {
-      document.getElementById("bonus2").innerHTML = "50";
-    }
-
-    let p3sum = document.getElementById("p3sum");
-    tempArray3 = tempArray3.slice(0, 6);
-    let player3_singulars = tempArray3.map((element) => Number(element.value));
-    let p3summedsingulars = player3_singulars.reduce(
-      (acc, value) => acc + value,
-      0
-    );
-    p3sum.innerHTML = p3summedsingulars;
-    if (p3summedsingulars >= 63) {
-      document.getElementById("bonus3").innerHTML = "50";
-    }
-
-    let p4sum = document.getElementById("p4sum");
-    tempArray4 = tempArray4.slice(0, 6);
-    let player4_singulars = tempArray4.map((element) => Number(element.value));
-    let p4summedsingulars = player4_singulars.reduce(
-      (acc, value) => acc + value,
-      0
-    );
-    p4sum.innerHTML = p4summedsingulars;
-    if (p4summedsingulars >= 63) {
-      document.getElementById("bonus4").innerHTML = "50";
-    }
-  }
 
   sumTotal() {
-    let tempArray1 = Array.from(document.getElementsByClassName("player1"));
-    let tempArray2 = Array.from(document.getElementsByClassName("player2"));
-    let tempArray3 = Array.from(document.getElementsByClassName("player3"));
-    let tempArray4 = Array.from(document.getElementsByClassName("player4"));
+      for (let i = 1; i < (this.noOfPlayers +1); i++) {
+          let tempArray = Array.from(document.querySelectorAll(`.player${i}`));
+          let psum = document.getElementById(`p${i}total`);
+        
+          tempArray = tempArray
+          .map((element) => Number(element.value))
+          .reduce((acc, value) => acc + value, 0);
 
-    //PLAYER 1 TOTAL SUM
-    let p1total = document.getElementById("p1total");
-    let player1_totals = tempArray1.map((element) => Number(element.value));
-    let p1totalsum = player1_totals.reduce((acc, value) => acc + value, 0);
-
-    if (Number(document.getElementById("bonus1").innerHTML) > 0) {
-        p1totalsum += 50;
-    }
-    p1total.innerHTML = p1totalsum;
-
-    //PLAYER 2 TOTAL SUM
-    let p2total = document.getElementById("p2total");
-    let player2_totals = tempArray2.map((element) => Number(element.value));
-    let p2totalsum = player2_totals.reduce((acc, value) => acc + value, 0);
-
-    if (Number(document.getElementById("bonus2").innerHTML) > 0) {
-        p2totalsum += 50;
-    }
-    p2total.innerHTML = p2totalsum;
-
-    //PLAYER 3 TOTAL SUM
-    let p3total = document.getElementById("p3total");
-    let player3_totals = tempArray3.map((element) => Number(element.value));
-    let p3totalsum = player3_totals.reduce((acc, value) => acc + value, 0);
-
-    if (Number(document.getElementById("bonus3").innerHTML) > 0) {
-        p3totalsum += 50;
-    }
-    p3total.innerHTML = p3totalsum;
-
-    //PLAYER 4 TOTAL SUM
-    let p4total = document.getElementById("p4total");
-    let player4_totals = tempArray4.map((element) => Number(element.value));
-    let p4totalsum = player4_totals.reduce((acc, value) => acc + value, 0);
-
-    if (Number(document.getElementById("bonus4").innerHTML) > 0) {
-        p4totalsum += 50;
-    }
-    p4total.innerHTML = p4totalsum;
-  }
-}
+          if (Number(document.getElementById(`bonus${i}`).innerHTML) > 0) {
+            tempArray += 50;
+        };
+        psum.innerHTML = tempArray;
+      };
+  }; 
+};
 
 class Player {
   constructor(name) {
