@@ -4,10 +4,13 @@ class Game {
     }
 
     newGame() {
-        let noOfPlayers = prompt("How many players are you? Choose between 1-4.");
+        let noOfPlayers = prompt("How many players are you? Choose between 2-4.");
         noOfPlayers = Number(noOfPlayers);
 
-        this.checkPlayers(noOfPlayers);
+        while (noOfPlayers < 2 || noOfPlayers > 4) {
+            noOfPlayers = prompt("Choose between 2-4 players. How many players are you?");
+            noOfPlayers = Number(noOfPlayers);
+        };
 
         for (let i = 0; i < noOfPlayers; i++) {
             let player = new Player(`player${i+1}`);
@@ -21,13 +24,6 @@ class Game {
             playerfields[i].classList.add('active');
         }
         
-    };
-
-    checkPlayers(noOfPlayers) {
-        if (noOfPlayers > 4){
-        alert("Too many players. Choose between 1-4.")
-            this.newGame();
-        } 
     };
 
     togglePlayers() {
