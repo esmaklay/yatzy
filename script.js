@@ -3,14 +3,19 @@ class Game {
     this.playersArray = [];
   }
 
-  newGame() {
-    let noOfPlayers = prompt("How many players are you? Choose between 1-4.");
-    noOfPlayers = Number(noOfPlayers);
+    newGame() {
+        let noOfPlayers = prompt("How many players are you? Choose between 2-4.");
+        noOfPlayers = Number(noOfPlayers);
 
-    for (let i = 0; i < noOfPlayers; i++) {
-      let player = new Player(`player${i + 1}`);
-      this.playersArray.push(player);
-    }
+        while (noOfPlayers < 2 || noOfPlayers > 4) {
+            noOfPlayers = prompt("Choose between 2-4 players. How many players are you?");
+            noOfPlayers = Number(noOfPlayers);
+        };
+
+        for (let i = 0; i < noOfPlayers; i++) {
+            let player = new Player(`player${i+1}`);
+            this.playersArray.push(player);
+        };
 
     this.playersArray[0].turn = true;
 
@@ -19,7 +24,7 @@ class Game {
       playerfields[i].classList.add("active");
 
       //DETTA DISABLAR SPELARE 1, DVS DET SKA VI INTE HA. MEN KODEN FUNKAR FÖR ATT DISABLA.
-      playerfields[i].disabled = true;
+      //playerfields[i].disabled = true;
     }
 
     /* ------- DISABLED SOM INTE RIKTIGT FUNKAR-------------*/
@@ -59,6 +64,65 @@ class Game {
       }
     }
   }
+
+  sumSingulars() {
+    let tempArray1 = Array.from(document.getElementsByClassName("player1"));
+    let tempArray2 = Array.from(document.getElementsByClassName("player2"));
+    let tempArray3 = Array.from(document.getElementsByClassName("player3"));
+    let tempArray4 = Array.from(document.getElementsByClassName("player4"));
+
+    let p1sum = document.getElementById("p1sum");
+    tempArray1 = tempArray1.slice(0, 6);
+    let player1_singulars = tempArray1.map((element) => Number(element.value));
+    let p1summedsingulars = player1_singulars.reduce(
+      (acc, value) => acc + value,
+      0
+    );
+    p1sum.innerHTML = p1summedsingulars;
+    if (p1summedsingulars >= 63) {
+      document.getElementById("bonus1").innerHTML = "50";
+    }
+
+    let p2sum = document.getElementById("p2sum");
+    tempArray2 = tempArray2.slice(0, 6);
+    let player2_singulars = tempArray2.map((element) => Number(element.value));
+    let p2summedsingulars = player2_singulars.reduce(
+      (acc, value) => acc + value,
+      0
+    );
+    p2sum.innerHTML = p2summedsingulars;
+    if (p2summedsingulars >= 63) {
+      document.getElementById("bonus2").innerHTML = "50";
+    }
+
+    let p3sum = document.getElementById("p3sum");
+    tempArray3 = tempArray3.slice(0, 6);
+    let player3_singulars = tempArray3.map((element) => Number(element.value));
+    let p3summedsingulars = player3_singulars.reduce(
+      (acc, value) => acc + value,
+      0
+    );
+    p3sum.innerHTML = p3summedsingulars;
+    if (p3summedsingulars >= 63) {
+      document.getElementById("bonus3").innerHTML = "50";
+    }
+
+    let p4sum = document.getElementById("p4sum");
+    tempArray4 = tempArray4.slice(0, 6);
+    let player4_singulars = tempArray4.map((element) => Number(element.value));
+    let p4summedsingulars = player4_singulars.reduce(
+      (acc, value) => acc + value,
+      0
+    );
+    p4sum.innerHTML = p4summedsingulars;
+    if (p4summedsingulars >= 63) {
+      document.getElementById("bonus4").innerHTML = "50";
+    }
+  }
+
+  sumTotal() {
+      //Här summeras totalen, funkar som ovan
+  }
 }
 
 class Player {
@@ -87,13 +151,17 @@ document.addEventListener("DOMContentLoaded", function (e) {
   let player3 = document.getElementById("player3").value;
   let player4 = document.getElementById("player4").value;
 
-  let tempArray1 = Array.from(document.getElementsByClassName("player1"));
+  //FLYTTAT TILL CLASS GAME() SOM METOD!
+  /* let tempArray1 = Array.from(document.getElementsByClassName("player1"));
   let tempArray2 = Array.from(document.getElementsByClassName("player2"));
   let tempArray3 = Array.from(document.getElementsByClassName("player3"));
-  let tempArray4 = Array.from(document.getElementsByClassName("player4"));
+  let tempArray4 = Array.from(document.getElementsByClassName("player4")); */
 
   sumButton.addEventListener("click", function (e) {
-    let p1sum = document.getElementById("p1sum");
+      game1.sumSingulars();
+
+      //NEDAN ÄR FLYTTAT TILL CLASS GAME() SOM METOD!
+    /* let p1sum = document.getElementById("p1sum");
     tempArray1 = tempArray1.slice(0, 6);
     let player1_singulars = tempArray1.map((element) => Number(element.value));
     p1summedsingulars = player1_singulars.reduce(
@@ -139,13 +207,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
     p4sum.innerHTML = p4summedsingulars;
     if (p4summedsingulars >= 63) {
       document.getElementById("bonus4").innerHTML = "50";
-    }
+    } */
   });
 
-  function sumTotal() {
-    //for (let i=1; i < .length; i++) {
-    //}
-  }
+  game1.sumTotal()
 
   let diceArray = Array.from(document.getElementsByClassName("dice"));
 
