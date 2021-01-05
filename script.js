@@ -67,7 +67,12 @@ class Player {
     this.turn = false;
   }
 }
-
+class dice{
+    constructor(){
+        
+    }
+    
+}
 document.addEventListener("DOMContentLoaded", function (e) {
   let game1 = new Game();
   game1.newGame();

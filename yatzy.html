@@ -180,36 +180,44 @@
     <button type="button" id="totalButton">Summarize total!</button>
     <button type="button" id="btnDone">Done!</button>
 
-    <div>
-      <p>
-        Dice1:
-        <input type="checkbox" class="dice">
-      </p>
-      
-      <p>
-        Dice2:
-        <input type="checkbox" class="dice">
-      </p>
+    <div class="diceConatiner">
+      <div class="dice">
+        <h4> Dice 1</h4><br>
+          <img src="dice6.png"> <br>
+          <input type="checkbox" class="dice">
+      </div>
+     
+      <div class="dice">
+        <h4> Dice 2</h4><br>
+          <img src="dice6.png"> <br>
+          <input type="checkbox" class="dice">
+      </div>
+      <div class="dice">
+        <h4> Dice 3</h4><br>
+          <img src="dice6.png"> <br>
+          <input type="checkbox" class="dice">
+      </div>
 
-      <p>
-        Dice3:
-        <input type="checkbox" class="dice">
-      </p>
+      <div class="dice">
+        <h4> Dice 4</h4><br>
+          <img src="dice6.png"> <br>
+          <input type="checkbox" class="dice">
+      </div>
+      <div class="dice">
+        <h4> Dice 5</h4><br>
+          <img src="dice6.png"> <br>
+          <input type="checkbox" class="dice">
+      </div>
+    </div> 
 
-      <p>
-        Dice4:
-        <input type="checkbox" class="dice">
-      </p>
-
-      <p>
-        Dice5:
-        <input type="checkbox" class="dice">
-      </p>
-      
-      <button type="button" id="diceButton">Click when done choosing!</button>
+      <div class="diceBottom"> 
+        <button type="button" class="butn"
+            onClick="rollTheDice()"> 
+            Roll the Dice 
+        </button> 
     </div>
 
-
+</div> 
 
 
     <script src="script.js"></script>
