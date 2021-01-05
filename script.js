@@ -132,6 +132,35 @@ class Player {
   }
 }
 
+class Die {
+    constructor() {
+        this.value = 0;
+        this.throw();
+    }
+
+    throw() {
+        this.value = Math.floor(Math.random() *6 + 1);
+    }
+}
+
+class Dice {
+    constructor(no_dices=5) {
+        this.dice = []
+        for (let i=0; i < no_dices; i++) {
+            this.dice.push(new Die())
+        }
+    }
+
+    throw(){
+       /*  for (let i=0; i < this.dice.length; i++) {
+            this.dice[i].throw() */
+        
+            for (let current_die of this.dice) {
+                current_die.throw();
+            }
+        }
+}
+
 document.addEventListener("DOMContentLoaded", function (e) {
   let game1 = new Game();
   game1.newGame();
