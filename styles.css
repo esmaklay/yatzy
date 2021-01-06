@@ -7,6 +7,117 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.container{
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: 1fr;
+}
+
+header{
+  grid-area: 1 / 3 / 2 / 11;
+  margin: auto;
+}
+
+.table{
+  grid-area: 2 / 2 / 6 / 7;
+}
+
+table {
+  border-collapse: collapse;
+  border: 3px solid black;
+  text-align: center;
+}
+
+.dicegrid {
+  grid-area: 3 / 7 / 4 / 11;
+}
+
+.diceContainer{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.dice {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+img {
+  height: 70px;
+}
+
+input[type=checkbox] {
+  width: 40px;
+  height: 40px;
+}
+
+.game-buttons {
+  grid-area: 4 / 7 / 5 / 11;
+  margin: auto;
+}
+
+.sum-buttons {
+  grid-area: 5 / 7 / 6 / 11;
+  margin: auto;
+}
+
+.game-buttons > button {
+  background-color: #4CAF50;
+  border: lightgray solid .5px;
+  color: #ffffff;
+  font-family: 'Raleway',sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  padding: 14px;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.game-buttons > button:hover {
+  background-color: rgb(4, 107, 50);
+  color: white;
+  transition: color .7s ease-in, background-color 250ms ease-in;
+}
+
+.game-buttons > button:active {
+  font-size: 22px;
+  transition: font-size .1s ease-in-out;
+}
+
+.game-buttons > button:disabled {
+  font-size: 22px;
+  transition: font-size .1s ease-in-out;
+  opacity: 50%;
+}
+
+.sum-buttons > button {
+  background-color: rgb(65, 62, 62);
+  border: lightgray solid .5px;
+  color: #ffffff;
+  font-family: 'Raleway',sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  padding: 14px;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.sum-buttons > button:hover {
+  background-color: rgb(167, 155, 155);
+  color: black;
+  transition: color 250ms ease-in, background-color 250ms ease-in;
+}
+
+.sum-buttons > button:active {
+  font-size: 22px;
+  transition: font-size .1s ease-in-out;
+}
+
 th {
   padding: 5px;
   border: solid 1px black;
@@ -19,22 +130,6 @@ td {
   background-color: white;
   /* background: lightgrey; */
   height: 2.2rem;
-}
-
-/* td:nth-child(even) {
-  background: lightgrey;
-}
-
-td:nth-child(odd) {
-  background: white;
-} */
-
-table {
-  border-collapse: collapse;
-  border: 3px solid black;
-  max-width: 50%;
-  margin: 20px auto;
-  text-align: center;
 }
 
 .boldBorder {
@@ -54,12 +149,6 @@ input {
   background-color: darkgray !important;
   font-weight: bold;
 }
-/* 
-.lightGray > td,
-th,
-input {
-  background-color: lightgray;
-} */
 
 input {
   width: 100%;
@@ -82,8 +171,6 @@ col {
 .active {
   background-color: lightgreen;
 }
-.diceConatiner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
+
+

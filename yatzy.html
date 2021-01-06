@@ -4,220 +4,226 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
-    <title>Yatzy</title>
+    <title>Yatzhee</title>
   </head>
   <body>
     
-    <table>
-      <colgroup>
-        <col>
-        <col class="player" id="player1" >
-        <col class="player" id="player2">
-        <col class="player" id="player3">
-        <col class="player" id="player4">
-      </colgroup>
-      <thead>
-        <tr class="boldBorder lightGray">
-          <th class="darkGray">Players</th>
-          <th>
-          <input class="lightGray" type="TEXT" name="name" />
-          </th>
-          <th><input class="lightGray" type="TEXT" name="name" /></th>
-          <th><input class="lightGray" type="TEXT" name="name" /></th>
-          <th><input class="lightGray" type="TEXT" name="name" /></th>
-        </tr>
-      </thead>
-      <tbody class="singulars">
-        <tr>
-          <td>Ones</td>
-          <td><input type="number" class="player1" min="0" max="5" step="1" disabled></td>
-          <td><input type="number" class="player2" min="0" max="5" step="1" disabled></td>
-          <td><input type="number" class="player3" min="0" max="5" step="1" disabled></td>
-          <td><input type="number" class="player4" min="0" max="5" step="1" disabled></td>
-        </tr>
+    <div class = "container">
+      <header>
+        <h1>PLAY YATZHEE</h1>
+      </header>
+    <div class = "table">
+      <table>
+        <colgroup>
+          <col>
+          <col class="player" id="player1" >
+          <col class="player" id="player2">
+          <col class="player" id="player3">
+          <col class="player" id="player4">
+        </colgroup>
+        <thead>
+          <tr class="boldBorder lightGray">
+            <th class="darkGray">Players</th>
+            <th><input class="lightGray" type="TEXT" name="name" placeholder="Player 1"></th>
+            <th><input class="lightGray" type="TEXT" name="name" placeholder="Player 2"></th>
+            <th><input class="lightGray" type="TEXT" name="name" placeholder="Player 3"></th>
+            <th><input class="lightGray" type="TEXT" name="name" placeholder="Player 4"></th>
+          </tr>
+        </thead>
+        <tbody class="singulars">
+          <tr>
+            <td>Ones</td>
+            <td><input type="number" class="player1" min="0" max="5" step="1" disabled></td>
+            <td><input type="number" class="player2" min="0" max="5" step="1" disabled></td>
+            <td><input type="number" class="player3" min="0" max="5" step="1" disabled></td>
+            <td><input type="number" class="player4" min="0" max="5" step="1" disabled></td>
+          </tr>
 
-        <tr>
-          <td>Twos</td>
-          <td><input type="number" class="player1" min="0" max="10" step="2" disabled></td>
-          <td><input type="number" class="player2" min="0" max="10" step="2" disabled></td>
-          <td><input type="number" class="player3" min="0" max="10" step="2" disabled></td>
-          <td><input type="number" class="player4" min="0" max="10" step="2" disabled></td>
-        </tr>
+          <tr>
+            <td>Twos</td>
+            <td><input type="number" class="player1" min="0" max="10" step="2" disabled></td>
+            <td><input type="number" class="player2" min="0" max="10" step="2" disabled></td>
+            <td><input type="number" class="player3" min="0" max="10" step="2" disabled></td>
+            <td><input type="number" class="player4" min="0" max="10" step="2" disabled></td>
+          </tr>
 
-        <tr>
-          <td>Threes</td>
-          <td><input type="number" class="player1" min="0" max="15" step="3"disabled></td>
-          <td><input type="number" class="player2" min="0" max="15" step="3"disabled></td>
-          <td><input type="number" class="player3" min="0" max="15" step="3"disabled></td>
-          <td><input type="number" class="player4" min="0" max="15" step="3"disabled></td>
-        </tr>
+          <tr>
+            <td>Threes</td>
+            <td><input type="number" class="player1" min="0" max="15" step="3"disabled></td>
+            <td><input type="number" class="player2" min="0" max="15" step="3"disabled></td>
+            <td><input type="number" class="player3" min="0" max="15" step="3"disabled></td>
+            <td><input type="number" class="player4" min="0" max="15" step="3"disabled></td>
+          </tr>
 
-        <tr>
-          <td>Fours</td>
-          <td><input type="number" class="player1" min="0" max="20" step="4"disabled></td>
-          <td><input type="number" class="player2" min="0" max="20" step="4"disabled></td>
-          <td><input type="number" class="player3" min="0" max="20" step="4"disabled></td>
-          <td><input type="number" class="player4" min="0" max="20" step="4"disabled></td>
-        </tr>
+          <tr>
+            <td>Fours</td>
+            <td><input type="number" class="player1" min="0" max="20" step="4"disabled></td>
+            <td><input type="number" class="player2" min="0" max="20" step="4"disabled></td>
+            <td><input type="number" class="player3" min="0" max="20" step="4"disabled></td>
+            <td><input type="number" class="player4" min="0" max="20" step="4"disabled></td>
+          </tr>
 
-        <tr>
-          <td>Fives</td>
-          <td><input type="number" class="player1" min="0" max="25" step="5"disabled></td>
-          <td><input type="number" class="player2" min="0" max="25" step="5"disabled></td>
-          <td><input type="number" class="player3" min="0" max="25" step="5"disabled></td>
-          <td><input type="number" class="player4" min="0" max="25" step="5"disabled></td>
-        </tr>
+          <tr>
+            <td>Fives</td>
+            <td><input type="number" class="player1" min="0" max="25" step="5"disabled></td>
+            <td><input type="number" class="player2" min="0" max="25" step="5"disabled></td>
+            <td><input type="number" class="player3" min="0" max="25" step="5"disabled></td>
+            <td><input type="number" class="player4" min="0" max="25" step="5"disabled></td>
+          </tr>
 
-        <tr>
-          <td>Sixes</td>
-          <td><input type="number" class="player1" min="0" max="30" step="6"disabled></td>
-          <td><input type="number" class="player2" min="0" max="30" step="6"disabled></td>
-          <td><input type="number" class="player3" min="0" max="30" step="6"disabled></td>
-          <td><input type="number" class="player4" min="0" max="30" step="6"disabled></td>
-        </tr>
-      </tbody>
-        <tr class="boldBorder darkGray">
-          <td>Sum</td>
-          <td id="p1sum"></td>
-          <td id="p2sum"></td>
-          <td id="p3sum"></td>
-          <td id="p4sum"></td>
-        </tr>
+          <tr>
+            <td>Sixes</td>
+            <td><input type="number" class="player1" min="0" max="30" step="6"disabled></td>
+            <td><input type="number" class="player2" min="0" max="30" step="6"disabled></td>
+            <td><input type="number" class="player3" min="0" max="30" step="6"disabled></td>
+            <td><input type="number" class="player4" min="0" max="30" step="6"disabled></td>
+          </tr>
+        </tbody>
+          <tr class="boldBorder darkGray">
+            <td>Sum</td>
+            <td id="p1sum"></td>
+            <td id="p2sum"></td>
+            <td id="p3sum"></td>
+            <td id="p4sum"></td>
+          </tr>
 
-        <tr class="boldBorder darkGray">
-          <td>Bonus</td>
-          <td id="bonus1"></td>
-          <td id="bonus2"></td>
-          <td id="bonus3"></td>
-          <td id="bonus4"></td>
-        </tr>
-      
-      <tbody class="combinations">
-        <tr>
-          <td>Pair</td>
-          <td><input type="number" class="player1" min="0" max="12"disabled</td>
-          <td><input type="number" class="player2" min="0" max="12"disabled></td>
-          <td><input type="number" class="player3" min="0" max="12"disabled></td>
-          <td><input type="number" class="player4" min="0" max="12"disabled></td>
-        </tr>
+          <tr class="boldBorder darkGray">
+            <td>Bonus</td>
+            <td id="bonus1"></td>
+            <td id="bonus2"></td>
+            <td id="bonus3"></td>
+            <td id="bonus4"></td>
+          </tr>
+        
+        <tbody class="combinations">
+          <tr>
+            <td>Pair</td>
+            <td><input type="number" class="player1" min="0" max="12"disabled</td>
+            <td><input type="number" class="player2" min="0" max="12"disabled></td>
+            <td><input type="number" class="player3" min="0" max="12"disabled></td>
+            <td><input type="number" class="player4" min="0" max="12"disabled></td>
+          </tr>
 
-        <tr>
-          <td>Two Pairs</td>
-          <td><input type="number" class="player1" min="0" max="12"disabled></td>
-          <td><input type="number" class="player2" min="0" max="22"disabled></td>
-          <td><input type="number" class="player3" min="0" max="12"disabled></td>
-          <td><input type="number" class="player4" min="0" max="12"disabled></td>
-        </tr>
+          <tr>
+            <td>Two Pairs</td>
+            <td><input type="number" class="player1" min="0" max="12"disabled></td>
+            <td><input type="number" class="player2" min="0" max="22"disabled></td>
+            <td><input type="number" class="player3" min="0" max="12"disabled></td>
+            <td><input type="number" class="player4" min="0" max="12"disabled></td>
+          </tr>
 
-        <tr>
-          <td>Three of a kind</td>
-          <td><input type="number" class="player1" min="0" max="18"disabled></td>
-          <td><input type="number" class="player2" min="0" max="18"disabled></td>
-          <td><input type="number" class="player3" min="0" max="18"disabled></td>
-          <td><input type="number" class="player4" min="0" max="18"disabled></td>
-        </tr>
+          <tr>
+            <td>Three of a kind</td>
+            <td><input type="number" class="player1" min="0" max="18"disabled></td>
+            <td><input type="number" class="player2" min="0" max="18"disabled></td>
+            <td><input type="number" class="player3" min="0" max="18"disabled></td>
+            <td><input type="number" class="player4" min="0" max="18"disabled></td>
+          </tr>
 
-        <tr>
-          <td>Four of a kind</td>
-          <td><input type="number" class="player1" min="0" max="24"disabled></td>
-          <td><input type="number" class="player2" min="0" max="24"disabled></td>
-          <td><input type="number" class="player3" min="0" max="24"disabled></td>
-          <td><input type="number" class="player4" min="0" max="24"disabled></td>
-        </tr>
+          <tr>
+            <td>Four of a kind</td>
+            <td><input type="number" class="player1" min="0" max="24"disabled></td>
+            <td><input type="number" class="player2" min="0" max="24"disabled></td>
+            <td><input type="number" class="player3" min="0" max="24"disabled></td>
+            <td><input type="number" class="player4" min="0" max="24"disabled></td>
+          </tr>
 
-        <tr>
-          <td>Small straight</td>
-          <td><input type="number" class="player1" min="0" max="15"disabled></td>
-          <td><input type="number" class="player2" min="0" max="15"disabled></td>
-          <td><input type="number" class="player3" min="0" max="15"disabled></td>
-          <td><input type="number" class="player4" min="0" max="15"disabled></td>
-        </tr>
+          <tr>
+            <td>Small straight</td>
+            <td><input type="number" class="player1" min="0" max="15"disabled></td>
+            <td><input type="number" class="player2" min="0" max="15"disabled></td>
+            <td><input type="number" class="player3" min="0" max="15"disabled></td>
+            <td><input type="number" class="player4" min="0" max="15"disabled></td>
+          </tr>
 
-        <tr>
-          <td>Large straight</td>
-          <td><input type="number" class="player1" min="0" max="20"disabled></td>
-          <td><input type="number" class="player2" min="0" max="20"disabled></td>
-          <td><input type="number" class="player3" min="0" max="20"disabled></td>
-          <td><input type="number" class="player4" min="0" max="20"disabled></td>
-        </tr>
+          <tr>
+            <td>Large straight</td>
+            <td><input type="number" class="player1" min="0" max="20"disabled></td>
+            <td><input type="number" class="player2" min="0" max="20"disabled></td>
+            <td><input type="number" class="player3" min="0" max="20"disabled></td>
+            <td><input type="number" class="player4" min="0" max="20"disabled></td>
+          </tr>
 
-        <tr>
-          <td>Full house</td>
-          <td><input type="number" class="player1" min="0" max="28"disabled></td>
-          <td><input type="number" class="player2" min="0" max="28"disabled></td>
-          <td><input type="number" class="player3" min="0" max="28"disabled></td>
-          <td><input type="number" class="player4" min="0" max="28"disabled></td>
-        </tr>
+          <tr>
+            <td>Full house</td>
+            <td><input type="number" class="player1" min="0" max="28"disabled></td>
+            <td><input type="number" class="player2" min="0" max="28"disabled></td>
+            <td><input type="number" class="player3" min="0" max="28"disabled></td>
+            <td><input type="number" class="player4" min="0" max="28"disabled></td>
+          </tr>
 
-        <tr>
-          <td>Chance</td>
-          <td><input type="number" class="player1" min="0" max="30"disabled></td>
-          <td><input type="number" class="player2" min="0" max="30"disabled></td>
-          <td><input type="number" class="player3" min="0" max="30"disabled></td>
-          <td><input type="number" class="player4" min="0" max="30"disabled></td>
-        </tr>
+          <tr>
+            <td>Chance</td>
+            <td><input type="number" class="player1" min="0" max="30"disabled></td>
+            <td><input type="number" class="player2" min="0" max="30"disabled></td>
+            <td><input type="number" class="player3" min="0" max="30"disabled></td>
+            <td><input type="number" class="player4" min="0" max="30"disabled></td>
+          </tr>
 
-        <tr>
-          <td>Yatzy</td>
-          <td><input type="number" class="player1" min="0" max="50"disabled></td>
-          <td><input type="number" class="player2" min="0" max="50"disabled></td>
-          <td><input type="number" class="player3" min="0" max="50"disabled></td>
-          <td><input type="number" class="player4" min="0" max="50"disabled></td>
-        </tr>
-      </tbody>
+          <tr>
+            <td>Yatzy</td>
+            <td><input type="number" class="player1" min="0" max="50"disabled></td>
+            <td><input type="number" class="player2" min="0" max="50"disabled></td>
+            <td><input type="number" class="player3" min="0" max="50"disabled></td>
+            <td><input type="number" class="player4" min="0" max="50"disabled></td>
+          </tr>
+        </tbody>
 
-      <tfoot>
-        <tr class="boldBorder darkGray">
-          <td>Total</td>
-          <td id="p1total"></td>
-          <td id="p2total"></td>
-          <td id="p3total"></td>
-          <td id="p4total"></td>  
-        </tr>
-      </tfoot>
-    </table>
-    <button type="button" id="sumButton">Summarize singulars!</button>
-    <button type="button" id="totalButton">Summarize total!</button>
-    <button type="button" id="btnDone">Done!</button>
-
-    <div class="diceConatiner">
-      <div class="dice">
-        <h4> Dice 1</h4><br>
-          <img class="img1" src="dice6.png"> <br>
-          <input type="checkbox" id="1">
-      </div>
-     
-      <div class="dice">
-        <h4> Dice 2</h4><br>
-          <img class="img2" src="dice6.png"> <br>
-          <input type="checkbox" id="2">
-      </div>
-
-      <div class="dice">
-        <h4> Dice 3</h4><br>
-          <img class="img3" src="dice6.png"> <br>
-          <input type="checkbox" id="3">
-      </div>
-
-      <div class="dice">
-        <h4> Dice 4</h4><br>
-          <img class="img4" src="dice6.png"> <br>
-          <input type="checkbox" id="4">
-      </div>
-      
-      <div class="dice">
-        <h4> Dice 5</h4><br>
-          <img class="img5" src="dice6.png"> <br>
-          <input type="checkbox" id="5">
-      </div>
-    </div> 
-
-      <div> 
-        <button type="button" id="buttonThrow">Roll the Dice </button>
+        <tfoot>
+          <tr class="boldBorder darkGray">
+            <td>Total</td>
+            <td id="p1total"></td>
+            <td id="p2total"></td>
+            <td id="p3total"></td>
+            <td id="p4total"></td>  
+          </tr>
+        </tfoot>
+      </table>
     </div>
+      <div class="dicegrid">
+      <div class="diceContainer">
+        <div class="dice">
+          <h4> Dice 1</h4><br>
+            <img class="img1" src="dice6.png"> <br>
+            <input type="checkbox" id="1">
+        </div>
+      
+        <div class="dice">
+          <h4> Dice 2</h4><br>
+            <img class="img2" src="dice6.png"> <br>
+            <input type="checkbox" id="2">
+        </div>
 
-</div> 
+        <div class="dice">
+          <h4> Dice 3</h4><br>
+            <img class="img3" src="dice6.png"> <br>
+            <input type="checkbox" id="3">
+        </div>
 
+        <div class="dice">
+          <h4> Dice 4</h4><br>
+            <img class="img4" src="dice6.png"> <br>
+            <input type="checkbox" id="4">
+        </div>
+        
+        <div class="dice">
+          <h4> Dice 5</h4><br>
+            <img class="img5" src="dice6.png"> <br>
+            <input type="checkbox" id="5">
+        </div>
+      </div> 
+    </div>
+      <div class="game-buttons">
+        <button type="button" id="buttonThrow">Roll the Dice</button>
+        <button type="button" id="btnDone">Done!</button>
+      </div>
+      <div class="sum-buttons">
+        <button type="button" id="sumButton">Sum singles</button>
+        <button type="button" id="totalButton">Sum total</button>
+      </div>
+      
+  </div>
+</div>
 
     <script src="script.js"></script>
   </body>

@@ -100,6 +100,7 @@ class Game {
   };
 
   sumTotal() {
+    this.sumSingulars();
     for (let i = 1; i < this.noOfPlayers + 1; i++) {
       let tempArray = Array.from(document.querySelectorAll(`.player${i}`));
       let psum = document.getElementById(`p${i}total`);
