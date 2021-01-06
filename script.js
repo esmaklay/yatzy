@@ -57,6 +57,12 @@ class Game {
   togglePlayers() {
     this.nrOfThrows = 3;
     buttonThrow.disabled = false;
+    
+    let checkArray = Array.from(document.querySelectorAll('input[type="checkbox"]'))
+    for (let box of checkArray) {
+      box.checked = false;
+    };
+
     for (let i = 0; i < this.playersArray.length; i++) {
       if (this.playersArray[i].turn === true) {
         let playerfields = document.querySelectorAll(`.player${[i + 1]}`);
