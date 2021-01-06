@@ -1,9 +1,5 @@
 /* TODO:
-1. Möjlighet att spara tärningar 
-2. Hantera max 3 kast
-3. Ta bort checkboxar när man trycker på "done"
 4. Local Storage
-5. Disabla spelare vars tur det inte är
 5,5: Startknapp?
 6. CSS... */
 
@@ -16,6 +12,11 @@ class Game {
   }
 
   newGame() {
+    let checkArray = Array.from(document.querySelectorAll('input[type="checkbox"]'))
+    for (let box of checkArray) {
+      box.disabled = true;
+    };
+
     this.noOfPlayers = prompt("How many players are you? Choose between 2-4.");
     this.noOfPlayers = Number(this.noOfPlayers);
 
@@ -37,26 +38,19 @@ class Game {
     for (let i = 0; i < playerfields.length; i++) {
       playerfields[i].classList.add("active");
       playerfields[i].disabled = false;
-
-      //DETTA DISABLAR SPELARE 1, DVS DET SKA VI INTE HA. MEN KODEN FUNKAR FÖR ATT DISABLA.
-      // playerfields[i].disabled = true;
     }
-    // let disabled = document.querySelectorAll(".player2, .player3, .player4");
-    // console.log(disabled[i]);
-    // disabled[i].disabled = true;
-
-    /* ------- DISABLED SOM INTE RIKTIGT FUNKAR-------------*/
-    // if (document.querySelectorAll(".active")) {
-    //   for (let i = 0; i < playerfields.length; i++) {
-    //     let disabled = document.querySelectorAll(".player2, .player3, .player4");
-    //     disabled[i].disabled = true;
-    //   }
-    // }
   }
 
   togglePlayers() {
     this.nrOfThrows = 3;
     buttonThrow.disabled = false;
+    
+    let checkArray = Array.from(document.querySelectorAll('input[type="checkbox"]'))
+    for (let box of checkArray) {
+      box.checked = false;
+      box.disabled = true;
+    };
+
     for (let i = 0; i < this.playersArray.length; i++) {
       if (this.playersArray[i].turn === true) {
         let playerfields = document.querySelectorAll(`.player${[i + 1]}`);
@@ -64,7 +58,7 @@ class Game {
         for (let i = 0; i < playerfields.length; i++) {
           playerfields[i].classList.remove("active");
           playerfields[i].disabled = true;
-        }
+        };
 
         this.playersArray[i].turn = false;
 
@@ -74,19 +68,19 @@ class Game {
           for (let i = 0; i < playerfields.length; i++) {
             playerfields[i].classList.add("active");
             playerfields[i].disabled = false;
-          }
+          };
         } else {
           this.playersArray[i + 1].turn = true;
           playerfields = document.querySelectorAll(`.player${[i + 2]}`);
           for (let i = 0; i < playerfields.length; i++) {
             playerfields[i].classList.add("active");
             playerfields[i].disabled = false;
-          }
-        }
+          };
+        };
         break;
-      }
-    }
-  }
+      };
+    };
+  };
 
   sumSingulars() {
     for (let i = 1; i < this.noOfPlayers + 1; i++) {
@@ -101,11 +95,12 @@ class Game {
 
       if (tempArray >= 63) {
         document.getElementById(`bonus${i}`).innerHTML = "50";
-      }
-    }
-  }
+      };
+    };
+  };
 
   sumTotal() {
+    this.sumSingulars();
     for (let i = 1; i < this.noOfPlayers + 1; i++) {
       let tempArray = Array.from(document.querySelectorAll(`.player${i}`));
       let psum = document.getElementById(`p${i}total`);
@@ -116,13 +111,16 @@ class Game {
 
       if (Number(document.getElementById(`bonus${i}`).innerHTML) > 0) {
         tempArray += 50;
-      }
+      };
       psum.innerHTML = tempArray;
-    }
-  }
+    };
+  };
 
   throwDice() {
-    //Loop through checkboxes. Return filtered array. If not checked, throw repsonding die.
+    let checkArray = Array.from(document.querySelectorAll('input[type="checkbox"]'))
+    for (let box of checkArray) {
+      box.disabled = false;
+    };
 
     if (this.nrOfThrows >= 1) {
       console.log(this.nrOfThrows);
@@ -137,73 +135,67 @@ class Game {
 
       if (this.nrOfThrows == 0) {
         buttonThrow.disabled = true;
-      }
-    }
-
-    /*this.dice.throw();
-
-    for (let i = 0; i < 5; i++) {
-      document.querySelector(`.img${i+1}`).src=`dice${this.dice.diceArray[i].value}.png`
-    };*/
-
-    /*diceButton.addEventListener("click", function (event) {
-    filteredArray = diceArray.filter((element) => {
-      return element.checked;
-    });
-
-    console.log(filteredArray);
-  });
-*/
-  }
-}
+      };
+    };
+  };
+};
 
 class Player {
   constructor() {
     //this.name = name;
     this.turn = false;
-  }
-}
+  };
+};
 
 class Die {
   constructor() {
     this.value = 0;
     this.throw();
-  }
+  };
 
   throw() {
     this.value = Math.floor(Math.random() * 6 + 1);
-  }
-}
+  };
+};
 
 class Dice {
   constructor(no_dices = 5) {
     this.diceArray = [];
     for (let i = 0; i < no_dices; i++) {
       this.diceArray.push(new Die());
-    }
-  }
+    };
+  };
 
   throw() {
-    for (let current_die of this.diceArray) {
-      current_die.throw();
-    }
-  }
-}
+    //Gather all checkboxes in an array. 
+    let checkArray = Array.from(document.querySelectorAll('input[type="checkbox"]'))
+    
+    //Return filtered array of unchecked checkboxes.
+    let filteredArray = checkArray.filter((checkbox) => {
+        return checkbox.checked === false        
+      });
+
+    //Throw all die responding to checkbox id by checking.
+      for (let current_box of filteredArray) {
+        let id = Number(current_box.id)
+        for (let i=0; i < this.diceArray.length; i++) {
+          if (id === i) {
+            this.diceArray[i-1].throw()
+          };
+        };
+      };
+  };
+
+};
 
 document.addEventListener("DOMContentLoaded", function (e) {
   let game1 = new Game();
   game1.newGame();
-  console.log(game1.playersArray);
 
   let sumButton = document.getElementById("sumButton");
   let totalButton = document.getElementById("totalButton");
   let btnDone = document.getElementById("btnDone");
-
-  //DESSA ANVÄNDS INTE ÄN....
-  /*  let player1 = document.getElementById("player1").value;
-  let player2 = document.getElementById("player2").value;
-  let player3 = document.getElementById("player3").value;
-  let player4 = document.getElementById("player4").value; */
+  let buttonThrow = document.getElementById("buttonThrow");
 
   sumButton.addEventListener("click", function (e) {
     game1.sumSingulars();
@@ -213,13 +205,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
     game1.sumTotal();
   });
 
-  //let diceArray = Array.from(document.getElementsByClassName("dice"));
-
-  btnDone.addEventListener("click", function (event) {
+  btnDone.addEventListener("click", function (e) {
     game1.togglePlayers();
   });
 
-  buttonThrow.addEventListener("click", function (event) {
+  buttonThrow.addEventListener("click", function (e) {
     game1.throwDice();
   });
+
 });
