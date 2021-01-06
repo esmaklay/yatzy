@@ -1,3 +1,12 @@
+/* TODO:
+1. Möjlighet att spara tärningar 
+2. Hantera max 3 kast
+3. Ta bort checkboxar när man trycker på "done"
+4. Local Storage
+5. Disabla spelare vars tur det inte är
+5,5: Startknapp?
+6. CSS... */
+
 class Game {
   constructor() {
     this.playersArray = [];
@@ -11,7 +20,7 @@ class Game {
 
         while (this.noOfPlayers < 2 || this.noOfPlayers > 4) {
             this.noOfPlayers = prompt("Choose between 2-4 players. How many players are you?");
-            this.noOfPlayers = Number(noOfPlayers);
+            this.noOfPlayers = Number(this.noOfPlayers);
         };
 
         for (let i = 0; i < this.noOfPlayers; i++) {
@@ -107,30 +116,24 @@ class Game {
     this.dice.throw();
 
     for (let i = 0; i < 5; i++) {
-      let currVal = this.dice.dice[i].value
-      document.querySelector(`.img${i+1}`).setAttribute("src", `dice${currVal}.png`)
+      document.querySelector(`.img${i+1}`).src=`dice${this.dice.diceArray[i].value}.png`
     };
-  
-/*  document.querySelector(".img1").setAttribute("src", 
-        "dice" + this.dice.dice[0].value + ".png"); 
 
-    document.querySelector(".img2").setAttribute("src", 
-        "dice" + this.dice.dice[1].value + ".png"); 
-    
-    document.querySelector(".img3").setAttribute("src", 
-        "dice" + this.dice.dice[2].value + ".png"); 
-    
-    document.querySelector(".img4").setAttribute("src", 
-        "dice" + this.dice.dice[3].value + ".png"); 
-    
-    document.querySelector(".img5").setAttribute("src", 
-        "dice" + this.dice.dice[4].value + ".png");  */
-  }
+      /*diceButton.addEventListener("click", function (event) {
+    filteredArray = diceArray.filter((element) => {
+      return element.checked;
+    });
+
+    console.log(filteredArray);
+  });
+*/
+
+  };
 };
 
 class Player {
-  constructor(name) {
-    this.name = name;
+  constructor() {
+    //this.name = name;
     this.turn = false;
   }
 }
@@ -148,14 +151,14 @@ class Die {
 
 class Dice {
     constructor(no_dices=5) {
-        this.dice = []
+        this.diceArray = []
         for (let i=0; i < no_dices; i++) {
-            this.dice.push(new Die())
+            this.diceArray.push(new Die())
         }
     }
 
     throw() {
-        for (let current_die of this.dice) {
+        for (let current_die of this.diceArray) {
                 current_die.throw();
             }
         };
@@ -181,19 +184,11 @@ document.addEventListener("DOMContentLoaded", function (e) {
   });
 
   totalButton.addEventListener("click", function(e) {
-    game1.sumTotal()
+      game1.sumTotal()
   })
 
-  let diceArray = Array.from(document.getElementsByClassName("dice"));
+  //let diceArray = Array.from(document.getElementsByClassName("dice"));
 
-  /*diceButton.addEventListener("click", function (event) {
-    filteredArray = diceArray.filter((element) => {
-      return element.checked;
-    });
-
-    console.log(filteredArray);
-  });
-*/
   btnDone.addEventListener("click", function (event) {
     game1.togglePlayers();
   });
