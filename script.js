@@ -113,6 +113,8 @@ class Game {
   }; 
 
   throwDice() {
+    //Loop through checkboxes. Return filtered array. If not checked, throw repsonding die.
+    
     this.dice.throw();
 
     for (let i = 0; i < 5; i++) {
