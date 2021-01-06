@@ -1,9 +1,5 @@
 /* TODO:
-1. Möjlighet att spara tärningar 
-2. Hantera max 3 kast
-3. Ta bort checkboxar när man trycker på "done"
 4. Local Storage
-5. Disabla spelare vars tur det inte är
 5,5: Startknapp?
 6. CSS... */
 
@@ -16,6 +12,11 @@ class Game {
   }
 
   newGame() {
+    let checkArray = Array.from(document.querySelectorAll('input[type="checkbox"]'))
+    for (let box of checkArray) {
+      box.disabled = true;
+    };
+
     this.noOfPlayers = prompt("How many players are you? Choose between 2-4.");
     this.noOfPlayers = Number(this.noOfPlayers);
 
@@ -37,21 +38,7 @@ class Game {
     for (let i = 0; i < playerfields.length; i++) {
       playerfields[i].classList.add("active");
       playerfields[i].disabled = false;
-
-      //DETTA DISABLAR SPELARE 1, DVS DET SKA VI INTE HA. MEN KODEN FUNKAR FÖR ATT DISABLA.
-      // playerfields[i].disabled = true;
     }
-    // let disabled = document.querySelectorAll(".player2, .player3, .player4");
-    // console.log(disabled[i]);
-    // disabled[i].disabled = true;
-
-    /* ------- DISABLED SOM INTE RIKTIGT FUNKAR-------------*/
-    // if (document.querySelectorAll(".active")) {
-    //   for (let i = 0; i < playerfields.length; i++) {
-    //     let disabled = document.querySelectorAll(".player2, .player3, .player4");
-    //     disabled[i].disabled = true;
-    //   }
-    // }
   }
 
   togglePlayers() {
@@ -59,7 +46,6 @@ class Game {
     buttonThrow.disabled = false;
     
     let checkArray = Array.from(document.querySelectorAll('input[type="checkbox"]'))
-    console.log(checkArray)
     for (let box of checkArray) {
       box.checked = false;
       box.disabled = true;
@@ -204,7 +190,6 @@ class Dice {
 document.addEventListener("DOMContentLoaded", function (e) {
   let game1 = new Game();
   game1.newGame();
-  console.log(game1.playersArray);
 
   let sumButton = document.getElementById("sumButton");
   let totalButton = document.getElementById("totalButton");
@@ -219,11 +204,11 @@ document.addEventListener("DOMContentLoaded", function (e) {
     game1.sumTotal();
   });
 
-  btnDone.addEventListener("click", function (event) {
+  btnDone.addEventListener("click", function (e) {
     game1.togglePlayers();
   });
 
-  buttonThrow.addEventListener("click", function (event) {
+  buttonThrow.addEventListener("click", function (e) {
     game1.throwDice();
   });
 

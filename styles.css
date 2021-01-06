@@ -10,12 +10,23 @@ body {
 th {
   padding: 5px;
   border: solid 1px black;
-}
+} 
+
 td {
   border: solid 1px black;
   font-weight: 100;
   padding: 5px;
+  background-color: white;
+  /* background: lightgrey; */
 }
+
+/* td:nth-child(even) {
+  background: lightgrey;
+}
+
+td:nth-child(odd) {
+  background: white;
+} */
 
 table {
   border-collapse: collapse;
@@ -28,32 +39,27 @@ table {
   border: 2px solid black;
 }
 
-td:nth-child(even) {
-  background: darkgray;
-}
-td:nth-child(odd) {
-  background: white;
-}
-
-.lightGray > td,
-th,
-input {
+.lightGray >
+th > input {
   background-color: lightgray;
 }
 
-.darkGray {
+.lightGray >
+th, input {
+  background-color: lightgray;
+}
+
+
+.darkGray > tr > td{
   background-color: darkgray !important;
   font-weight: bold;
 }
 
-/* td:nth-child(n + 2) {
-  max-width: 50px;
-} */
 
 input {
   width: 100%;
   border: none;
-  
+  background-color: white;
 }
 
 col {
@@ -61,7 +67,7 @@ col {
 }
 
 .active {
-  background-color: green;
+  background-color: lightgreen;
 }
 .diceConatiner {
   display: flex;
