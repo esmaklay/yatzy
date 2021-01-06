@@ -10,14 +10,15 @@ body {
 th {
   padding: 5px;
   border: solid 1px black;
-} 
+}
 
 td {
   border: solid 1px black;
   font-weight: 100;
-  padding: 5px;
+  /* padding: 5px; */
   background-color: white;
   /* background: lightgrey; */
+  height: 2.2rem;
 }
 
 /* td:nth-child(even) {
@@ -33,33 +34,45 @@ table {
   border: 3px solid black;
   max-width: 50%;
   margin: 20px auto;
+  text-align: center;
 }
 
 .boldBorder {
   border: 2px solid black;
 }
 
-.lightGray >
-th > input {
+.lightGray > th > input {
   background-color: lightgray;
 }
 
-.lightGray >
-th, input {
+.lightGray > th,
+input {
   background-color: lightgray;
 }
 
-
-.darkGray > tr > td{
+.darkGray > td {
   background-color: darkgray !important;
   font-weight: bold;
 }
-
+/* 
+.lightGray > td,
+th,
+input {
+  background-color: lightgray;
+} */
 
 input {
   width: 100%;
   border: none;
   background-color: white;
+
+  position: relative;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+input[type="number"] {
+  height: 100%;
 }
 
 col {
