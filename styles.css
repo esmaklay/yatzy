@@ -7,18 +7,18 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.container{
+.container {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-auto-rows: 1fr;
 }
 
-header{
+header {
   grid-area: 1 / 3 / 2 / 11;
   margin: auto;
 }
 
-.table{
+.table {
   grid-area: 2 / 2 / 6 / 7;
 }
 
@@ -32,7 +32,7 @@ table {
   grid-area: 3 / 7 / 4 / 11;
 }
 
-.diceContainer{
+.diceContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -49,7 +49,7 @@ img {
   height: 70px;
 }
 
-input[type=checkbox] {
+input[type="checkbox"] {
   width: 40px;
   height: 40px;
 }
@@ -64,11 +64,16 @@ input[type=checkbox] {
   margin: auto;
 }
 
+.start-button {
+  grid-area: 2 / 7 / 3 / 11;
+  margin: auto;
+}
+
 .game-buttons > button {
-  background-color: #4CAF50;
-  border: lightgray solid .5px;
+  background-color: #4caf50;
+  border: lightgray solid 0.5px;
   color: #ffffff;
-  font-family: 'Raleway',sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 20px;
   font-weight: 400;
   padding: 14px;
@@ -80,25 +85,25 @@ input[type=checkbox] {
 .game-buttons > button:hover {
   background-color: rgb(4, 107, 50);
   color: white;
-  transition: color .7s ease-in, background-color 250ms ease-in;
+  transition: color 0.7s ease-in, background-color 250ms ease-in;
 }
 
 .game-buttons > button:active {
   font-size: 22px;
-  transition: font-size .1s ease-in-out;
+  transition: font-size 0.1s ease-in-out;
 }
 
 .game-buttons > button:disabled {
   font-size: 22px;
-  transition: font-size .1s ease-in-out;
+  transition: font-size 0.1s ease-in-out;
   opacity: 50%;
 }
 
 .sum-buttons > button {
   background-color: rgb(65, 62, 62);
-  border: lightgray solid .5px;
+  border: lightgray solid 0.5px;
   color: #ffffff;
-  font-family: 'Raleway',sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 20px;
   font-weight: 400;
   padding: 14px;
@@ -115,7 +120,31 @@ input[type=checkbox] {
 
 .sum-buttons > button:active {
   font-size: 22px;
-  transition: font-size .1s ease-in-out;
+  transition: font-size 0.1s ease-in-out;
+}
+
+.start-button > button {
+  background-color: #4caf50;
+  border: lightgray solid 0.5px;
+  color: #ffffff;
+  font-family: "Raleway", sans-serif;
+  font-size: 40px;
+  font-weight: 400;
+  padding: 14px;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.start-button > button:hover {
+  background-color: rgb(4, 107, 50);
+  color: white;
+  transition: color 0.7s ease-in, background-color 250ms ease-in;
+}
+
+.start-button > button:active {
+  font-size: 45px;
+  transition: font-size 0.1s ease-in-out;
 }
 
 th {
@@ -172,5 +201,6 @@ col {
   background-color: lightgreen;
 }
 
-
-
+.hidden {
+  display: none;
+}
