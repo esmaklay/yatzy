@@ -2,6 +2,7 @@ class Game {
   constructor() {
     this.playersArray = [];
     this.noOfPlayers = 0;
+    this.dice = new Dice();
   }
 
     newGame() {
@@ -35,6 +36,8 @@ class Game {
     //     disabled[i].disabled = true;
     //   }
     // }
+
+
   }
 
   togglePlayers() {
@@ -99,6 +102,30 @@ class Game {
         psum.innerHTML = tempArray;
       };
   }; 
+
+  throwDice() {
+    this.dice.throw();
+
+    for (let i = 0; i < 5; i++) {
+      let currVal = this.dice.dice[i].value
+      document.querySelector(`.img${i+1}`).setAttribute("src", `dice${currVal}.png`)
+    };
+  
+/*  document.querySelector(".img1").setAttribute("src", 
+        "dice" + this.dice.dice[0].value + ".png"); 
+
+    document.querySelector(".img2").setAttribute("src", 
+        "dice" + this.dice.dice[1].value + ".png"); 
+    
+    document.querySelector(".img3").setAttribute("src", 
+        "dice" + this.dice.dice[2].value + ".png"); 
+    
+    document.querySelector(".img4").setAttribute("src", 
+        "dice" + this.dice.dice[3].value + ".png"); 
+    
+    document.querySelector(".img5").setAttribute("src", 
+        "dice" + this.dice.dice[4].value + ".png");  */
+  }
 };
 
 class Player {
@@ -143,10 +170,11 @@ document.addEventListener("DOMContentLoaded", function (e) {
   let totalButton = document.getElementById("totalButton");
   let btnDone = document.getElementById("btnDone");
 
-  let player1 = document.getElementById("player1").value;
+  //DESSA ANVÄNDS INTE ÄN....
+ /*  let player1 = document.getElementById("player1").value;
   let player2 = document.getElementById("player2").value;
   let player3 = document.getElementById("player3").value;
-  let player4 = document.getElementById("player4").value;
+  let player4 = document.getElementById("player4").value; */
 
   sumButton.addEventListener("click", function (e) {
       game1.sumSingulars();
@@ -168,29 +196,11 @@ document.addEventListener("DOMContentLoaded", function (e) {
 */
   btnDone.addEventListener("click", function (event) {
     game1.togglePlayers();
-    console.log(game1.playersArray);
   });
 
   buttonThrow.addEventListener("click",function(event){
-  var randomNumber1 = Math.floor(Math.random() * 6) + 1; 
-  var randomNumber2 = Math.floor(Math.random() * 6) + 1; 
-  var randomNumber3 = Math.floor(Math.random() * 6) + 1; 
-  var randomNumber4 = Math.floor(Math.random() * 6) + 1; 
-  var randomNumber5 = Math.floor(Math.random() * 6) + 1; 
-  document.querySelector(".img1").setAttribute("src", 
-      "dice" + randomNumber1 + ".png"); 
-
-  document.querySelector(".img2").setAttribute("src", 
-      "dice" + randomNumber2 + ".png"); 
+    game1.throwDice();
   
-  document.querySelector(".img3").setAttribute("src", 
-      "dice" + randomNumber3 + ".png"); 
-  
-  document.querySelector(".img4").setAttribute("src", 
-      "dice" + randomNumber4 + ".png"); 
-  
-  document.querySelector(".img5").setAttribute("src", 
-      "dice" + randomNumber5 + ".png"); 
-});
+  });
   
 });
