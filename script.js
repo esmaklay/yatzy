@@ -132,7 +132,7 @@ class Game {
       for (let i = 0; i < 5; i++) {
         document.querySelector(
           `.img${i + 1}`
-        ).src = `dice${this.dice.diceArray[i].value}.png`;
+        ).src = `giphy${this.dice.diceArray[i].value}.gif`;
       }
 
       if (this.nrOfThrows == 0) {
