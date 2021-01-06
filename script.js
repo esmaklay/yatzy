@@ -12,6 +12,7 @@ class Game {
     this.playersArray = [];
     this.noOfPlayers = 0;
     this.dice = new Dice();
+    this.nrOfThrows = 3;
   }
 
     newGame() {
@@ -28,7 +29,8 @@ class Game {
             this.playersArray.push(player);
         };
 
-    this.playersArray[0].turn = true;
+   
+        this.playersArray[0].turn = true;
 
     let playerfields = document.querySelectorAll(".player1");
     for (let i = 0; i < playerfields.length; i++) {
@@ -50,6 +52,8 @@ class Game {
   }
 
   togglePlayers() {
+    this.nrOfThrows = 3;
+    buttonThrow.disabled = false;
     for (let i = 0; i < this.playersArray.length; i++) {
       if (this.playersArray[i].turn === true) {
         let playerfields = document.querySelectorAll(`.player${[i + 1]}`);
@@ -114,12 +118,30 @@ class Game {
 
   throwDice() {
     //Loop through checkboxes. Return filtered array. If not checked, throw repsonding die.
-    
-    this.dice.throw();
+   
+    if (this.nrOfThrows >= 1) {
+      console.log(this.nrOfThrows);
+      this.dice.throw();
+      this.nrOfThrows = this.nrOfThrows-1;
+      
 
     for (let i = 0; i < 5; i++) {
       document.querySelector(`.img${i+1}`).src=`dice${this.dice.diceArray[i].value}.png`
+      
     };
+
+    if (this.nrOfThrows == 0){
+      buttonThrow.disabled = true;
+    }
+    } 
+      
+      
+    
+    /*this.dice.throw();
+
+    for (let i = 0; i < 5; i++) {
+      document.querySelector(`.img${i+1}`).src=`dice${this.dice.diceArray[i].value}.png`
+    };*/
 
       /*diceButton.addEventListener("click", function (event) {
     filteredArray = diceArray.filter((element) => {
@@ -147,7 +169,8 @@ class Die {
     };
 
     throw() {
-        this.value = Math.floor(Math.random() *6 + 1);    
+        this.value = Math.floor(Math.random() *6 + 1);
+            
     };
 }
 
@@ -193,6 +216,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
   btnDone.addEventListener("click", function (event) {
     game1.togglePlayers();
+    
+
   });
 
   buttonThrow.addEventListener("click",function(event){
