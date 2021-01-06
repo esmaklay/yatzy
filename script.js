@@ -59,8 +59,10 @@ class Game {
     buttonThrow.disabled = false;
     
     let checkArray = Array.from(document.querySelectorAll('input[type="checkbox"]'))
+    console.log(checkArray)
     for (let box of checkArray) {
       box.checked = false;
+      box.disabled = true;
     };
 
     for (let i = 0; i < this.playersArray.length; i++) {
@@ -128,6 +130,11 @@ class Game {
   };
 
   throwDice() {
+    let checkArray = Array.from(document.querySelectorAll('input[type="checkbox"]'))
+    for (let box of checkArray) {
+      box.disabled = false;
+    };
+
     if (this.nrOfThrows >= 1) {
       console.log(this.nrOfThrows);
       this.dice.throw();
@@ -202,6 +209,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
   let sumButton = document.getElementById("sumButton");
   let totalButton = document.getElementById("totalButton");
   let btnDone = document.getElementById("btnDone");
+  let buttonThrow = document.getElementById("buttonThrow");
 
   sumButton.addEventListener("click", function (e) {
     game1.sumSingulars();
