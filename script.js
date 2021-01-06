@@ -3,7 +3,7 @@
 2. Hantera max 3 kast
 3. Ta bort checkboxar när man trycker på "done"
 4. Local Storage
-5. Disabla spelare vars tur det inte är
+5. Disabla spelare vars tur det inte är 
 5,5: Startknapp?
 6. CSS... */
 
@@ -114,10 +114,19 @@ class Game {
 
   throwDice() {
     this.dice.throw();
-
+    let checkboxes = document.querySelectorAll(`input[name="dice"]:checked`);
+    console.log(checkboxes);
+    checkboxes.forEach((checkbox) => {
+      /*disabla*/
+    
+  })
     for (let i = 0; i < 5; i++) {
       document.querySelector(`.img${i+1}`).src=`dice${this.dice.diceArray[i].value}.png`
     };
+  }
+
+    
+    
 
       /*diceButton.addEventListener("click", function (event) {
     filteredArray = diceArray.filter((element) => {
