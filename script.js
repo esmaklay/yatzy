@@ -123,21 +123,33 @@ class Game {
   throwDice() {
     let checkArray = Array.from(
       document.querySelectorAll('input[type="checkbox"]')
+      
     );
+    console.log(checkArray);
     for (let box of checkArray) {
       box.disabled = false;
     }
-
+console.log(checkArray);
     if (this.nrOfThrows >= 1) {
       console.log(this.nrOfThrows);
       this.dice.throw();
       this.nrOfThrows = this.nrOfThrows - 1;
+      console.log(this.dice.diceArray);
 
       for (let i = 0; i < 5; i++) {
         document.querySelector(
           `.img${i + 1}`
         ).src = `giphy${this.dice.diceArray[i].value}.gif`;
+console.log(checkArray);
+        if (checkArray[i].checked === true) {
+          document.querySelector(
+            `.img${i + 1}`
+          ).src = `dice${this.dice.diceArray[i].value}.png`;
+        }
+        
       }
+
+      
 
       if (this.nrOfThrows == 0) {
         buttonThrow.disabled = true;
