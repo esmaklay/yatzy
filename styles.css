@@ -32,6 +32,7 @@ table {
   border-collapse: collapse;
   border: 3px solid black;
   text-align: center;
+  margin-bottom: 50px;
 }
 
 .start-button {
@@ -40,13 +41,15 @@ table {
 }
 
 .throws {
-  grid-area: 3 / 7 / 4 / 11;
+  grid-area: 2 / 7 / 3 / 11;
+  align-self: end;
+  padding-bottom: 50px;
   font-size: 20px;
   text-align: center;
 }
 
 .dicegrid {
-  grid-area: 4 / 7 / 5 / 11;
+  grid-area: 3 / 7 / 4 / 11;
 }
 
 .diceContainer {
@@ -72,14 +75,14 @@ input[type="checkbox"] {
 }
 
 .game-buttons {
-  grid-area: 5 / 7 / 6 / 11;
+  grid-area: 4 / 7 / 5 / 11;
   margin: 40px auto auto auto;
   display: flex;
   flex-direction: column;
 }
 
 .sum-buttons {
-  grid-area: 6 / 7 / 7 / 11;
+  grid-area: 5 / 7 / 6 / 11;
   margin: auto;
 }
 
@@ -239,4 +242,5 @@ thead > tr > th > input {
 
 .lightGray > th > input:hover {
   background-color: rgb(100, 170, 100) !important;
+  transition: color 250ms ease-in, background-color 250ms ease-in;
 }

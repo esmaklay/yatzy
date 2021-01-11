@@ -11,8 +11,8 @@ class Game {
   }
 
   newGame() {
-    let throwInfo = (document.querySelector(".throws").innerHTML =
-      "You have <span>3</span> throws left");
+    document.querySelector(".throws").innerHTML = "You have <span>3</span> throws left";
+    
     let checkArray = Array.from(
       document.querySelectorAll('input[type="checkbox"]')
     );
@@ -45,8 +45,7 @@ class Game {
   }
 
   togglePlayers() {
-    let throwInfo = (document.querySelector(".throws").innerHTML =
-      "You have <span>3</span> throws left");
+    document.querySelector(".throws").innerHTML = "You have <span>3</span> throws left";
 
     this.nrOfThrows = 3;
 
@@ -145,15 +144,6 @@ class Game {
       this.nrOfThrows = this.nrOfThrows - 1;
       console.log(this.dice.diceArray);
 
-      for (let i = 0; i < 5; i++) {
-        document.querySelector(
-          `.img${i + 1}`
-        ).src = `giphy${this.dice.diceArray[i].value}.gif`;
-        if (checkArray[i].checked === true) {
-          document.querySelector(
-            `.img${i + 1}`
-          ).src = `dice${this.dice.diceArray[i].value}.png`;
-        }
       }
 
       if (this.nrOfThrows == 0) {
@@ -161,7 +151,7 @@ class Game {
       }
     }
   }
-}
+
 
 class Player {
   constructor() {
@@ -173,11 +163,12 @@ class Player {
 class Die {
   constructor() {
     this.value = 0;
-    this.throw();
+    //this.throw();
   }
 
   throw() {
     this.value = Math.floor(Math.random() * 6 + 1);
+    console.log("kast")
   }
 }
 
@@ -194,6 +185,8 @@ class Dice {
     let checkArray = Array.from(
       document.querySelectorAll('input[type="checkbox"]')
     );
+    
+    
 
     //Return filtered array of unchecked checkboxes.
     let filteredArray = checkArray.filter((checkbox) => {
@@ -203,12 +196,28 @@ class Dice {
     //Throw all die responding to checkbox id by checking.
     for (let current_box of filteredArray) {
       let id = Number(current_box.id);
-      for (let i = 0; i < this.diceArray.length; i++) {
-        if (id === i) {
+      for (let i = 0; i < (this.diceArray.length); i++) {
+        if (id === (i+1)) {
           this.diceArray[i].throw();
         }
       }
     }
+
+    //Change image to gif if not checked in checkbox
+
+    for (let i = 0; i < 5; i++) {
+      if (checkArray[i].checked === false) {
+        document.querySelector(
+          `.img${i + 1}`
+        ).src = `giphy${this.diceArray[i].value}.gif`;
+      } else {
+        document.querySelector(
+          `.img${i + 1}`
+        ).src = `dice${this.diceArray[i].value}.png`;
+      }
+    } 
+
+
   }
 }
 
