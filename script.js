@@ -1,6 +1,6 @@
 /* TODO:
-4. Local Storage
-6. CSS... */
+1. Local Storage
+2. Info om namnruta*/
 
 class Game {
   constructor() {

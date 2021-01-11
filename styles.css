@@ -18,6 +18,12 @@ header {
   margin: auto;
 }
 
+.nameBox {
+  grid-area: 1 / 2 / 2 / 4;
+  align-self: end;
+  margin-bottom: 10px;
+}
+
 .table {
   grid-area: 2 / 2 / 6 / 7;
 }
@@ -220,4 +226,17 @@ col {
 
 .throws > span {
   color: red;
+}
+
+thead > tr > th > input {
+  cursor: pointer;
+}
+
+::placeholder {
+  color: black;
+  opacity: 1;
+}
+
+.lightGray > th > input:hover {
+  background-color: rgb(100, 170, 100) !important;
 }
