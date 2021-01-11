@@ -1,6 +1,5 @@
 /* TODO:
 4. Local Storage
-5,5: Startknapp?
 6. CSS... */
 
 class Game {
@@ -12,6 +11,8 @@ class Game {
   }
 
   newGame() {
+    let throwInfo = (document.querySelector(".throws").innerHTML =
+      "You have <span>3</span> throws left");
     let checkArray = Array.from(
       document.querySelectorAll('input[type="checkbox"]')
     );
@@ -44,7 +45,11 @@ class Game {
   }
 
   togglePlayers() {
+    let throwInfo = (document.querySelector(".throws").innerHTML =
+      "You have <span>3</span> throws left");
+
     this.nrOfThrows = 3;
+
     buttonThrow.disabled = false;
 
     let checkArray = Array.from(
@@ -121,17 +126,21 @@ class Game {
   }
 
   throwDice() {
+    let throwInfo = document.querySelector(".throws");
     let checkArray = Array.from(
       document.querySelectorAll('input[type="checkbox"]')
-      
     );
-    console.log(checkArray);
+
     for (let box of checkArray) {
       box.disabled = false;
     }
-console.log(checkArray);
+
     if (this.nrOfThrows >= 1) {
       console.log(this.nrOfThrows);
+      throwInfo.innerHTML = `You have <span>${
+        this.nrOfThrows - 1
+      }</span> throws left`;
+
       this.dice.throw();
       this.nrOfThrows = this.nrOfThrows - 1;
       console.log(this.dice.diceArray);
@@ -140,16 +149,12 @@ console.log(checkArray);
         document.querySelector(
           `.img${i + 1}`
         ).src = `giphy${this.dice.diceArray[i].value}.gif`;
-console.log(checkArray);
         if (checkArray[i].checked === true) {
           document.querySelector(
             `.img${i + 1}`
           ).src = `dice${this.dice.diceArray[i].value}.png`;
         }
-        
       }
-
-      
 
       if (this.nrOfThrows == 0) {
         buttonThrow.disabled = true;
@@ -177,9 +182,9 @@ class Die {
 }
 
 class Dice {
-  constructor(no_dices = 5) {
+  constructor(no_dice = 5) {
     this.diceArray = [];
-    for (let i = 0; i < no_dices; i++) {
+    for (let i = 0; i < no_dice; i++) {
       this.diceArray.push(new Die());
     }
   }
@@ -200,7 +205,7 @@ class Dice {
       let id = Number(current_box.id);
       for (let i = 0; i < this.diceArray.length; i++) {
         if (id === i) {
-          this.diceArray[i - 1].throw();
+          this.diceArray[i].throw();
         }
       }
     }
@@ -237,6 +242,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
   });
 
   buttonThrow.addEventListener("click", function (e) {
+    console.log(game1.dice);
     game1.throwDice();
+    console.log(game1.dice);
   });
 });

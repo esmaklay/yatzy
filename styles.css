@@ -28,8 +28,19 @@ table {
   text-align: center;
 }
 
-.dicegrid {
+.start-button {
+  grid-area: 2 / 7 / 3 / 11;
+  margin: auto;
+}
+
+.throws {
   grid-area: 3 / 7 / 4 / 11;
+  font-size: 20px;
+  text-align: center;
+}
+
+.dicegrid {
+  grid-area: 4 / 7 / 5 / 11;
 }
 
 .diceContainer {
@@ -55,17 +66,14 @@ input[type="checkbox"] {
 }
 
 .game-buttons {
-  grid-area: 4 / 7 / 5 / 11;
-  margin: auto;
+  grid-area: 5 / 7 / 6 / 11;
+  margin: 40px auto auto auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .sum-buttons {
-  grid-area: 5 / 7 / 6 / 11;
-  margin: auto;
-}
-
-.start-button {
-  grid-area: 2 / 7 / 3 / 11;
+  grid-area: 6 / 7 / 7 / 11;
   margin: auto;
 }
 
@@ -97,6 +105,11 @@ input[type="checkbox"] {
   font-size: 22px;
   transition: font-size 0.1s ease-in-out;
   opacity: 50%;
+}
+
+#btnDone {
+  background-color: #100f5c;
+  margin-top: 30px;
 }
 
 .sum-buttons > button {
@@ -203,4 +216,8 @@ col {
 
 .hidden {
   display: none;
+}
+
+.throws > span {
+  color: red;
 }
