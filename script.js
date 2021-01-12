@@ -150,27 +150,36 @@ class Game {
     };
 
   saveData() {
-    let p1Array = Array.from(document.querySelectorAll(`.player1`));
-    p1Array = p1Array.map((element) => Number(element.value));
+    for (let i = 1; i <= this.noOfPlayers; i++) {
+      const inputValues = JSON.stringify(Array
+                .from(document.querySelectorAll(`.player${i}`))
+                .map((element) => Number(element.value)));
+      localStorage.setItem(`p${i}Key`, inputValues);
+       
+    }
+    // let p1Array = document.querySelectorAll()
     
-    let p2Array = Array.from(document.querySelectorAll(`.player2`));
-    p2Array = p2Array.map((element) => Number(element.value));
+    // let p2Array = Array.from(document.querySelectorAll(`.player2`));
+    // p2Array = p2Array.map((element) => Number(element.value));
 
-    let p3Array = Array.from(document.querySelectorAll(`.player3`));
-    p3Array = p3Array.map((element) => Number(element.value));
+    // let p3Array = Array.from(document.querySelectorAll(`.player3`));
+    // p3Array = p3Array.map((element) => Number(element.value));
 
-    let p4Array = Array.from(document.querySelectorAll(`.player4`));
-    p4Array = p4Array.map((element) => Number(element.value));
+    // let p4Array = Array.from(document.querySelectorAll(`.player4`));
+    // p4Array = p4Array.map((element) => Number(element.value));
 
-    let p1fields = JSON.stringify(p1Array);
-    let p2fields = JSON.stringify(p2Array);
-    let p3fields = JSON.stringify(p3Array);
-    let p4fields = JSON.stringify(p4Array);
-      
-    localStorage.setItem("p1Key", p1fields);
-    localStorage.setItem("p2Key", p2fields);
-    localStorage.setItem("p3Key", p3fields);
-    localStorage.setItem("p4Key", p4fields);
+    // let p1fields = JSON.stringify(p1Array);
+    // let p2fields = JSON.stringify(p2Array);
+    // let p3fields = JSON.stringify(p3Array);
+    // let p4fields = JSON.stringify(p4Array);
+    
+    
+    
+    
+    // localStorage.setItem("p1Key", p1fields);
+    // localStorage.setItem("p2Key", p2fields);
+    // localStorage.setItem("p3Key", p3fields);
+    // localStorage.setItem("p4Key", p4fields);
   };
 
   getData() {
