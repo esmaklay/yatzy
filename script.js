@@ -163,14 +163,15 @@ class Game {
     }
   }
 
-  getData() {
-    console.log("get data");
-    let p11 = document.querySelector("#ones td:nth-child(1) input.player1");
-    p11.value = 5;
+  getdata() {
+    for (let i = 1; i <= this.noOfPlayers; i++) {
+      let storage = JSON.parse(localStorage.getItem(`p${i}Key`));
+      let inputs = document.querySelectorAll(`.player${i}`);
 
-    // let parsedValue = JSON.parse(localStorage.getItem("p1Key"));
-
-    // document.querySelectorAll(".player1") = localStorage.getItem("p1Key");
+      for (let i = 0; i < inputs.length; i++) {
+        inputs[i].value = storage[i];
+      }
+    }
   }
 }
 
@@ -271,6 +272,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
   });
 
   getData.addEventListener("click", function (e) {
-    game1.getData();
+    game1.getdata();
   });
 });
