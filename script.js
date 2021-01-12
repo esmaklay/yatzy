@@ -150,10 +150,36 @@ class Game {
     };
 
   saveData() {
-    let p11 = document.querySelector(".ones.player1").value;
-    console.log(p11)
-  }
+    let p1Array = Array.from(document.querySelectorAll(`.player1`));
+    p1Array = p1Array.map((element) => Number(element.value));
+    
+    let p2Array = Array.from(document.querySelectorAll(`.player2`));
+    p2Array = p2Array.map((element) => Number(element.value));
+
+    let p3Array = Array.from(document.querySelectorAll(`.player3`));
+    p3Array = p3Array.map((element) => Number(element.value));
+
+    let p4Array = Array.from(document.querySelectorAll(`.player4`));
+    p4Array = p4Array.map((element) => Number(element.value));
+
+    let p1fields = JSON.stringify(p1Array);
+    let p2fields = JSON.stringify(p2Array);
+    let p3fields = JSON.stringify(p3Array);
+    let p4fields = JSON.stringify(p4Array);
+      
+    localStorage.setItem("p1Key", p1fields);
+    localStorage.setItem("p2Key", p2fields);
+    localStorage.setItem("p3Key", p3fields);
+    localStorage.setItem("p4Key", p4fields);
   };
+
+  getData() {
+    let p1String = localStorage.getItem("p1Key")
+    let p1data = JSON.parse(p1String);
+
+    localStorage.setItem("player1", p1data)
+  }
+};
 
 
 class Player {
@@ -248,6 +274,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
   btnDone.addEventListener("click", function (e) {
     game1.togglePlayers();
     game1.saveData();
+    game1.getData();
   });
 
   buttonThrow.addEventListener("click", function (e) {
