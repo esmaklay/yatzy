@@ -163,15 +163,27 @@ class Game {
     }
   }
 
-  getdata() {
+  getData() {
     for (let i = 1; i <= this.noOfPlayers; i++) {
       let storage = JSON.parse(localStorage.getItem(`p${i}Key`));
       let inputs = document.querySelectorAll(`.player${i}`);
 
       for (let i = 0; i < inputs.length; i++) {
-        inputs[i].value = storage[i];
+        if (storage[i] == 0) {
+          inputs[i].value = "";
+        } else {
+          inputs[i].value = storage[i];
+        }
       }
     }
+  }
+
+  resetGame() {
+    localStorage.clear();
+    let clearInput = Array.from(document.getElementsByTagName("input"));
+    clearInput.map((element) => {
+      element.value = "";
+    });
   }
 }
 
@@ -243,14 +255,17 @@ document.addEventListener("DOMContentLoaded", function (e) {
   let btnDone = document.getElementById("btnDone");
   let buttonThrow = document.getElementById("buttonThrow");
   let gameBtnDiv = document.querySelector(".game-buttons");
+  let storageBtnDiv = document.querySelector(".storage-buttons");
   let startBtn = document.getElementById("startBtn");
   let getData = document.getElementById("getData");
+  let resetGame = document.getElementById("resetGame");
 
   startBtn.addEventListener("click", function (e) {
     game1.newGame();
     startBtn.classList.add("hidden");
     sumBtnDiv.classList.remove("hidden");
     gameBtnDiv.classList.remove("hidden");
+    storageBtnDiv.classList.remove("hidden");
     // game1.getData();
   });
 
@@ -272,6 +287,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
   });
 
   getData.addEventListener("click", function (e) {
-    game1.getdata();
+    game1.getData();
+  });
+
+  resetGame.addEventListener("click", function (e) {
+    game1.resetGame();
   });
 });
