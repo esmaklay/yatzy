@@ -1,6 +1,6 @@
 /* TODO:
 1. Local Storage
-2. Info om namnruta*/
+*/
 
 class Game {
   constructor() {
@@ -8,7 +8,7 @@ class Game {
     this.noOfPlayers = 0;
     this.dice = new Dice();
     this.nrOfThrows = 3;
-  }
+  };
 
   newGame() {
     document.querySelector(".throws").innerHTML = "You have <span>3</span> throws left";
@@ -28,12 +28,12 @@ class Game {
         "Choose between 2-4 players. How many players are you?"
       );
       this.noOfPlayers = Number(this.noOfPlayers);
-    }
+    };
 
     for (let i = 0; i < this.noOfPlayers; i++) {
       let player = new Player(`player${i + 1}`);
       this.playersArray.push(player);
-    }
+    };
 
     this.playersArray[0].turn = true;
 
@@ -41,8 +41,8 @@ class Game {
     for (let i = 0; i < playerfields.length; i++) {
       playerfields[i].classList.add("active");
       playerfields[i].disabled = false;
-    }
-  }
+    };
+  };
 
   togglePlayers() {
     document.querySelector(".throws").innerHTML = "You have <span>3</span> throws left";
@@ -57,7 +57,7 @@ class Game {
     for (let box of checkArray) {
       box.checked = false;
       box.disabled = true;
-    }
+    };
 
     for (let i = 0; i < this.playersArray.length; i++) {
       if (this.playersArray[i].turn === true) {
@@ -66,7 +66,7 @@ class Game {
         for (let i = 0; i < playerfields.length; i++) {
           playerfields[i].classList.remove("active");
           playerfields[i].disabled = true;
-        }
+        };
 
         this.playersArray[i].turn = false;
 
@@ -76,19 +76,19 @@ class Game {
           for (let i = 0; i < playerfields.length; i++) {
             playerfields[i].classList.add("active");
             playerfields[i].disabled = false;
-          }
+          };
         } else {
           this.playersArray[i + 1].turn = true;
           playerfields = document.querySelectorAll(`.player${[i + 2]}`);
           for (let i = 0; i < playerfields.length; i++) {
             playerfields[i].classList.add("active");
             playerfields[i].disabled = false;
-          }
-        }
+          };
+        };
         break;
-      }
-    }
-  }
+      };
+    };
+  };
 
   sumSingulars() {
     for (let i = 1; i < this.noOfPlayers + 1; i++) {
@@ -103,9 +103,9 @@ class Game {
 
       if (tempArray >= 63) {
         document.getElementById(`bonus${i}`).innerHTML = "50";
-      }
-    }
-  }
+      };
+    };
+  };
 
   sumTotal() {
     this.sumSingulars();
@@ -119,10 +119,10 @@ class Game {
 
       if (Number(document.getElementById(`bonus${i}`).innerHTML) > 0) {
         tempArray += 50;
-      }
+      };
       psum.innerHTML = tempArray;
-    }
-  }
+    };
+  };
 
   throwDice() {
     let throwInfo = document.querySelector(".throws");
@@ -132,53 +132,53 @@ class Game {
 
     for (let box of checkArray) {
       box.disabled = false;
-    }
+    };
 
     if (this.nrOfThrows >= 1) {
-      console.log(this.nrOfThrows);
+      console.log(this.nrOfThrows); 
       throwInfo.innerHTML = `You have <span>${
         this.nrOfThrows - 1
       }</span> throws left`;
 
       this.dice.throw();
       this.nrOfThrows = this.nrOfThrows - 1;
-      console.log(this.dice.diceArray);
-
-      }
+      };
 
       if (this.nrOfThrows == 0) {
         buttonThrow.disabled = true;
-      }
-    }
+      };
+    };
+
+  saveData() {
+    let p11 = document.querySelector(".ones.player1").value;
+    console.log(p11)
   }
+  };
 
 
 class Player {
   constructor() {
-    //this.name = name;
     this.turn = false;
-  }
-}
+  };
+};
 
 class Die {
   constructor() {
     this.value = 0;
-    //this.throw();
-  }
+  };
 
   throw() {
     this.value = Math.floor(Math.random() * 6 + 1);
-    console.log("kast")
-  }
-}
+  };
+};
 
 class Dice {
   constructor(no_dice = 5) {
     this.diceArray = [];
     for (let i = 0; i < no_dice; i++) {
       this.diceArray.push(new Die());
-    }
-  }
+    };
+  };
 
   throw() {
     //Gather all checkboxes in an array.
@@ -199,12 +199,11 @@ class Dice {
       for (let i = 0; i < (this.diceArray.length); i++) {
         if (id === (i+1)) {
           this.diceArray[i].throw();
-        }
-      }
-    }
+        };
+      };
+    };
 
     //Change image to gif if not checked in checkbox
-
     for (let i = 0; i < 5; i++) {
       if (checkArray[i].checked === false) {
         document.querySelector(
@@ -214,12 +213,11 @@ class Dice {
         document.querySelector(
           `.img${i + 1}`
         ).src = `dice${this.diceArray[i].value}.png`;
-      }
-    } 
+      };
+    }; 
 
-
-  }
-}
+  };
+};
 
 document.addEventListener("DOMContentLoaded", function (e) {
   let game1 = new Game();
@@ -236,6 +234,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     startBtn.classList.add("hidden");
     sumBtnDiv.classList.remove("hidden");
     gameBtnDiv.classList.remove("hidden");
+
   });
 
   sumButton.addEventListener("click", function (e) {
@@ -248,11 +247,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
   btnDone.addEventListener("click", function (e) {
     game1.togglePlayers();
+    game1.saveData();
   });
 
   buttonThrow.addEventListener("click", function (e) {
-    console.log(game1.dice);
     game1.throwDice();
-    console.log(game1.dice);
   });
 });
