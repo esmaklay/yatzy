@@ -257,8 +257,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
   let gameBtnDiv = document.querySelector(".game-buttons");
   let storageBtnDiv = document.querySelector(".storage-buttons");
   let startBtn = document.getElementById("startBtn");
-  let getData = document.getElementById("getData");
-  let resetGame = document.getElementById("resetGame");
+  let diceGrid = document.querySelector(".dicegrid");
 
   startBtn.addEventListener("click", function (e) {
     game1.newGame();
@@ -266,7 +265,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     sumBtnDiv.classList.remove("hidden");
     gameBtnDiv.classList.remove("hidden");
     storageBtnDiv.classList.remove("hidden");
-    // game1.getData();
+    diceGrid.classList.remove("hidden");
   });
 
   sumButton.addEventListener("click", function (e) {

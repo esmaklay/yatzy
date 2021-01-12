@@ -40,16 +40,9 @@ table {
   margin: auto;
 }
 
-.throws {
-  grid-area: 2 / 7 / 3 / 11;
-  align-self: end;
-  padding-bottom: 50px;
-  font-size: 20px;
-  text-align: center;
-}
-
 .dicegrid {
-  grid-area: 3 / 7 / 4 / 11;
+  grid-area: 2 / 7 / 3 / 11;
+  align-self: center;
 }
 
 .diceContainer {
@@ -63,6 +56,7 @@ table {
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
+  margin-top: 50px;
 }
 
 img {
@@ -74,16 +68,29 @@ input[type="checkbox"] {
   height: 40px;
 }
 
+.throws {
+  grid-area: 2 / 7 / 3 / 11;
+  align-self: start;
+  padding-bottom: 50px;
+  font-size: 20px;
+  text-align: center;
+}
+
 .game-buttons {
-  grid-area: 4 / 7 / 5 / 11;
-  margin: 40px auto auto auto;
+  grid-area: 3 / 7 / 4 / 11;
+  margin: auto;
   display: flex;
   flex-direction: column;
 }
 
 .sum-buttons {
-  grid-area: 5 / 7 / 6 / 11;
-  margin: auto;
+  grid-area: 4 / 7 / 5 / 11;
+  margin: 0 auto;
+}
+
+.storage-buttons {
+  grid-area: 4 / 7 / 5 / 11;
+  margin: auto auto 0 auto;
 }
 
 .game-buttons > button {
@@ -121,6 +128,39 @@ input[type="checkbox"] {
   margin-top: 30px;
 }
 
+.storage-buttons > button {
+  background-color: #4caf50;
+  border: lightgray solid 0.5px;
+  color: #ffffff;
+  font-family: "Raleway", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  padding: 14px;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.storage-buttons > button:hover {
+  background-color: rgb(4, 107, 50);
+  color: white;
+  transition: color 0.7s ease-in, background-color 250ms ease-in;
+}
+
+.storage-buttons > button:active {
+  font-size: 22px;
+  transition: font-size 0.1s ease-in-out;
+}
+
+.storage-buttons > button:disabled {
+  font-size: 22px;
+  transition: font-size 0.1s ease-in-out;
+  opacity: 50%;
+}
+
+#resetGame {
+  background-color: red;
+}
 .sum-buttons > button {
   background-color: rgb(65, 62, 62);
   border: lightgray solid 0.5px;
