@@ -8,11 +8,13 @@ class Game {
     this.noOfPlayers = 0;
     this.dice = new Dice();
     this.nrOfThrows = 3;
-  };
+    this.inputValues;
+  }
 
   newGame() {
-    document.querySelector(".throws").innerHTML = "You have <span>3</span> throws left";
-    
+    document.querySelector(".throws").innerHTML =
+      "You have <span>3</span> throws left";
+
     let checkArray = Array.from(
       document.querySelectorAll('input[type="checkbox"]')
     );
@@ -28,12 +30,12 @@ class Game {
         "Choose between 2-4 players. How many players are you?"
       );
       this.noOfPlayers = Number(this.noOfPlayers);
-    };
+    }
 
     for (let i = 0; i < this.noOfPlayers; i++) {
       let player = new Player(`player${i + 1}`);
       this.playersArray.push(player);
-    };
+    }
 
     this.playersArray[0].turn = true;
 
@@ -41,11 +43,12 @@ class Game {
     for (let i = 0; i < playerfields.length; i++) {
       playerfields[i].classList.add("active");
       playerfields[i].disabled = false;
-    };
-  };
+    }
+  }
 
   togglePlayers() {
-    document.querySelector(".throws").innerHTML = "You have <span>3</span> throws left";
+    document.querySelector(".throws").innerHTML =
+      "You have <span>3</span> throws left";
 
     this.nrOfThrows = 3;
 
@@ -57,7 +60,7 @@ class Game {
     for (let box of checkArray) {
       box.checked = false;
       box.disabled = true;
-    };
+    }
 
     for (let i = 0; i < this.playersArray.length; i++) {
       if (this.playersArray[i].turn === true) {
@@ -66,7 +69,7 @@ class Game {
         for (let i = 0; i < playerfields.length; i++) {
           playerfields[i].classList.remove("active");
           playerfields[i].disabled = true;
-        };
+        }
 
         this.playersArray[i].turn = false;
 
@@ -76,19 +79,19 @@ class Game {
           for (let i = 0; i < playerfields.length; i++) {
             playerfields[i].classList.add("active");
             playerfields[i].disabled = false;
-          };
+          }
         } else {
           this.playersArray[i + 1].turn = true;
           playerfields = document.querySelectorAll(`.player${[i + 2]}`);
           for (let i = 0; i < playerfields.length; i++) {
             playerfields[i].classList.add("active");
             playerfields[i].disabled = false;
-          };
-        };
+          }
+        }
         break;
-      };
-    };
-  };
+      }
+    }
+  }
 
   sumSingulars() {
     for (let i = 1; i < this.noOfPlayers + 1; i++) {
@@ -103,9 +106,9 @@ class Game {
 
       if (tempArray >= 63) {
         document.getElementById(`bonus${i}`).innerHTML = "50";
-      };
-    };
-  };
+      }
+    }
+  }
 
   sumTotal() {
     this.sumSingulars();
@@ -119,10 +122,10 @@ class Game {
 
       if (Number(document.getElementById(`bonus${i}`).innerHTML) > 0) {
         tempArray += 50;
-      };
+      }
       psum.innerHTML = tempArray;
-    };
-  };
+    }
+  }
 
   throwDice() {
     let throwInfo = document.querySelector(".throws");
@@ -132,96 +135,74 @@ class Game {
 
     for (let box of checkArray) {
       box.disabled = false;
-    };
+    }
 
     if (this.nrOfThrows >= 1) {
-      console.log(this.nrOfThrows); 
+      console.log(this.nrOfThrows);
       throwInfo.innerHTML = `You have <span>${
         this.nrOfThrows - 1
       }</span> throws left`;
 
       this.dice.throw();
       this.nrOfThrows = this.nrOfThrows - 1;
-      };
+    }
 
-      if (this.nrOfThrows == 0) {
-        buttonThrow.disabled = true;
-      };
-    };
+    if (this.nrOfThrows == 0) {
+      buttonThrow.disabled = true;
+    }
+  }
 
   saveData() {
     for (let i = 1; i <= this.noOfPlayers; i++) {
-      const inputValues = JSON.stringify(Array
-                .from(document.querySelectorAll(`.player${i}`))
-                .map((element) => Number(element.value)));
-      localStorage.setItem(`p${i}Key`, inputValues);
-       
+      this.inputValues = JSON.stringify(
+        Array.from(document.querySelectorAll(`.player${i}`)).map((element) =>
+          Number(element.value)
+        )
+      );
+      localStorage.setItem(`p${i}Key`, this.inputValues);
     }
-    // let p1Array = document.querySelectorAll()
-    
-    // let p2Array = Array.from(document.querySelectorAll(`.player2`));
-    // p2Array = p2Array.map((element) => Number(element.value));
-
-    // let p3Array = Array.from(document.querySelectorAll(`.player3`));
-    // p3Array = p3Array.map((element) => Number(element.value));
-
-    // let p4Array = Array.from(document.querySelectorAll(`.player4`));
-    // p4Array = p4Array.map((element) => Number(element.value));
-
-    // let p1fields = JSON.stringify(p1Array);
-    // let p2fields = JSON.stringify(p2Array);
-    // let p3fields = JSON.stringify(p3Array);
-    // let p4fields = JSON.stringify(p4Array);
-    
-    
-    
-    
-    // localStorage.setItem("p1Key", p1fields);
-    // localStorage.setItem("p2Key", p2fields);
-    // localStorage.setItem("p3Key", p3fields);
-    // localStorage.setItem("p4Key", p4fields);
-  };
+  }
 
   getData() {
-    let p1String = localStorage.getItem("p1Key")
-    let p1data = JSON.parse(p1String);
+    console.log("get data");
+    let p11 = document.querySelector("#ones td:nth-child(1) input.player1");
+    p11.value = 5;
 
-    localStorage.setItem("player1", p1data)
+    // let parsedValue = JSON.parse(localStorage.getItem("p1Key"));
+
+    // document.querySelectorAll(".player1") = localStorage.getItem("p1Key");
   }
-};
-
+}
 
 class Player {
   constructor() {
     this.turn = false;
-  };
-};
+  }
+}
 
 class Die {
   constructor() {
     this.value = 0;
-  };
+  }
 
   throw() {
     this.value = Math.floor(Math.random() * 6 + 1);
-  };
-};
+  }
+}
 
 class Dice {
   constructor(no_dice = 5) {
     this.diceArray = [];
     for (let i = 0; i < no_dice; i++) {
       this.diceArray.push(new Die());
-    };
-  };
+    }
+  }
 
   throw() {
     //Gather all checkboxes in an array.
     let checkArray = Array.from(
       document.querySelectorAll('input[type="checkbox"]')
     );
-    
-    
 
     //Return filtered array of unchecked checkboxes.
     let filteredArray = checkArray.filter((checkbox) => {
@@ -231,12 +212,12 @@ class Dice {
     //Throw all die responding to checkbox id by checking.
     for (let current_box of filteredArray) {
       let id = Number(current_box.id);
-      for (let i = 0; i < (this.diceArray.length); i++) {
-        if (id === (i+1)) {
+      for (let i = 0; i < this.diceArray.length; i++) {
+        if (id === i + 1) {
           this.diceArray[i].throw();
-        };
-      };
-    };
+        }
+      }
+    }
 
     //Change image to gif if not checked in checkbox
     for (let i = 0; i < 5; i++) {
@@ -248,11 +229,10 @@ class Dice {
         document.querySelector(
           `.img${i + 1}`
         ).src = `dice${this.diceArray[i].value}.png`;
-      };
-    }; 
-
-  };
-};
+      }
+    }
+  }
+}
 
 document.addEventListener("DOMContentLoaded", function (e) {
   let game1 = new Game();
@@ -263,13 +243,14 @@ document.addEventListener("DOMContentLoaded", function (e) {
   let buttonThrow = document.getElementById("buttonThrow");
   let gameBtnDiv = document.querySelector(".game-buttons");
   let startBtn = document.getElementById("startBtn");
+  let getData = document.getElementById("getData");
 
   startBtn.addEventListener("click", function (e) {
     game1.newGame();
     startBtn.classList.add("hidden");
     sumBtnDiv.classList.remove("hidden");
     gameBtnDiv.classList.remove("hidden");
-
+    // game1.getData();
   });
 
   sumButton.addEventListener("click", function (e) {
@@ -283,10 +264,13 @@ document.addEventListener("DOMContentLoaded", function (e) {
   btnDone.addEventListener("click", function (e) {
     game1.togglePlayers();
     game1.saveData();
-    game1.getData();
   });
 
   buttonThrow.addEventListener("click", function (e) {
     game1.throwDice();
+  });
+
+  getData.addEventListener("click", function (e) {
+    game1.getData();
   });
 });
