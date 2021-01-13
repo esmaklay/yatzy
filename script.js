@@ -198,7 +198,6 @@ class Die {
     this.value = 0;
 
     this.throw();
-
   }
 
   throw() {
@@ -261,6 +260,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
   let storageBtnDiv = document.querySelector(".storage-buttons");
   let startBtn = document.getElementById("startBtn");
   let diceGrid = document.querySelector(".dicegrid");
+  let logoDiv = document.querySelector(".logo");
 
   startBtn.addEventListener("click", function (e) {
     game1.newGame();
@@ -269,6 +269,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     gameBtnDiv.classList.remove("hidden");
     storageBtnDiv.classList.remove("hidden");
     diceGrid.classList.remove("hidden");
+    logoDiv.classList.add("hidden");
   });
 
   sumButton.addEventListener("click", function (e) {
