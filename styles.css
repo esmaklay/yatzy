@@ -3,6 +3,7 @@
   padding: 0;
 }
 
+
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -14,8 +15,25 @@ body {
 }
 
 header {
-  grid-area: 1 / 3 / 2 / 11;
+  grid-area: 1 / 7 / 3 / 11;
   margin: auto;
+  
+  /*z-index: -100;*/
+}
+
+.backgroundDiv{
+  grid-area: 1 / 2 / 6 / 7;
+  background-image: url("clipboard.jpg");
+ 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+padding-top: 210px;
+padding-left: 92px;
+padding-right: 84px;
+padding-bottom: 100px;
+max-height: 1500px;
 }
 
 .nameBox {
@@ -30,14 +48,9 @@ header {
 
 table {
   border-collapse: collapse;
-  border: 3px solid black;
+  /*border: 3px solid black;*/
   text-align: center;
-  margin-bottom: 50px;
-}
-
-.start-button {
-  grid-area: 2 / 7 / 3 / 11;
-  margin: auto;
+  
 }
 
 .dicegrid {
@@ -59,8 +72,15 @@ table {
   margin-top: 50px;
 }
 
+.logo > img{
+  
+    max-height: 200px;
+    /*z-index: -1000;*/
+  
+}
+
 img {
-  height: 70px;
+  max-height: 70px;
 }
 
 input[type="checkbox"] {
@@ -220,7 +240,7 @@ td {
   /* padding: 5px; */
   background-color: white;
   /* background: lightgrey; */
-  height: 2.2rem;
+  height: 1.6rem;
 }
 
 .boldBorder {
@@ -248,7 +268,7 @@ input {
 
   position: relative;
   text-align: center;
-  font-size: 1.2em;
+  font-size: 1em;
 }
 
 input[type="number"] {

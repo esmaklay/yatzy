@@ -196,6 +196,9 @@ class Player {
 class Die {
   constructor() {
     this.value = 0;
+
+    this.throw();
+
   }
 
   throw() {
@@ -282,6 +285,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
   });
 
   buttonThrow.addEventListener("click", function (e) {
+    console.log(game1.dice);
     game1.throwDice();
   });
 
