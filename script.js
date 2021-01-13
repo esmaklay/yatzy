@@ -1,7 +1,3 @@
-/* TODO:
-1. Local Storage
-*/
-
 class Game {
   constructor() {
     this.playersArray = [];
