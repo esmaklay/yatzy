@@ -22,7 +22,7 @@ header {
 
 .backgroundDiv {
   grid-area: 1 / 2 / 6 / 7;
-  background-image: url("clipboard.jpg");
+  background-image: url("clipboardbranded.jpg");
 
   background-position: center;
   background-repeat: no-repeat;
@@ -243,6 +243,7 @@ td {
   background-color: white;
   /* background: lightgrey; */
   height: 1.6rem;
+  
 }
 
 .boldBorder {
